@@ -11,18 +11,14 @@ mask_texture_button = NodePath("MaskSprite")
 
 [node name="MaskSpriteShadow" type="TextureRect" parent="." unique_id=1415725889]
 modulate = Color(0, 0, 0, 0.6117647)
-offset_left = -244.0
-offset_top = -294.0
-offset_right = 245.0
-offset_bottom = 294.0
+offset_right = 489.0
+offset_bottom = 588.0
 pivot_offset = Vector2(244, 294)
 texture = ExtResource("2_3kh16")
 
 [node name="MaskSprite" type="TextureButton" parent="." unique_id=1015226943]
-offset_left = -244.0
-offset_top = -294.0
-offset_right = 245.0
-offset_bottom = 294.0
+offset_right = 489.0
+offset_bottom = 588.0
 pivot_offset = Vector2(244, 294)
 texture_normal = ExtResource("2_3kh16")
 texture_pressed = ExtResource("2_3kh16")

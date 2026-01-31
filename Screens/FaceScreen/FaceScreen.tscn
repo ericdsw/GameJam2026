@@ -33,13 +33,15 @@ position = Vector2(706.5, 365.5)
 texture = ExtResource("2_8fhud")
 
 [node name="Face" parent="." unique_id=880044491 instance=ExtResource("1_rnw1p")]
-position = Vector2(707.5, 492.5)
+position = Vector2(363.5, 147.5)
+skin_color = 1
+hair_color = 1
 
 [node name="OutOfBoundsMaskStartPosition" type="Marker2D" parent="." unique_id=1071863705]
-position = Vector2(-344, 140)
+position = Vector2(-528, -28)
 
 [node name="MaskStartPosition" type="Marker2D" parent="." unique_id=533221031]
-position = Vector2(58, 292)
+position = Vector2(-126, 124)
 
 [node name="Incense" parent="." unique_id=768750567 instance=ExtResource("5_bohhc")]
 position = Vector2(1169, 315)

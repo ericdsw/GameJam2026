@@ -11,9 +11,8 @@ script = ExtResource("1_br0od")
 base_sprite = NodePath("Base")
 eyes_sprite = NodePath("Eyes")
 hairs_sprite = NodePath("Hairs")
-hair_variant = 3
-skin_color = 3
-hair_color = 3
+hair_variant = 2
+hair_color = 2
 skin_colors = Array[Color]([Color(1, 0.9137255, 0.76862746, 1), Color(0.6392157, 0.58431375, 0.5137255, 1), Color(0.27058825, 0.22745098, 0.17254902, 1), Color(1, 0.972549, 0.9411765, 1), Color(0.52156866, 0.4392157, 0.3372549, 1)])
 hair_colors = Array[Color]([Color(0.8784314, 0.8784314, 0.44705883, 1), Color(0.07058824, 0.07058824, 0.07058824, 1), Color(0.7607843, 0.39607844, 0.21176471, 1), Color(0.7294118, 0.7294118, 0.7294118, 1), Color(0.16078432, 0.12941177, 0.09411765, 1), Color(0.17254902, 0.39215687, 0.52156866, 1)])
 
@@ -22,7 +21,7 @@ visible = false
 texture = ExtResource("1_gnrgg")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1301879379]
-modulate = Color(0.27058825, 0.22745098, 0.17254902, 1)
+modulate = Color(1, 0.9137255, 0.76862746, 1)
 texture = ExtResource("2_22hb8")
 centered = false
 hframes = 3
@@ -34,9 +33,9 @@ centered = false
 hframes = 3
 
 [node name="Hairs" type="Sprite2D" parent="." unique_id=1155135631]
-modulate = Color(0.7607843, 0.39607844, 0.21176471, 1)
+modulate = Color(0.07058824, 0.07058824, 0.07058824, 1)
 position = Vector2(95, -84)
 texture = ExtResource("4_oreo6")
 centered = false
 hframes = 3
-frame = 2
+frame = 1

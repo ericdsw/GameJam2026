@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://del4lonx4vh2m"]
+
+[ext_resource type="Texture2D" uid="uid://b55stfgr7b5j0" path="res://Resources/Images/Elements/misc_props.png" id="1_40qyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfnl1"]
+atlas = ExtResource("1_40qyq")
+region = Rect2(35, 454, 57, 64)
+
+[node name="CrystalBall" type="Node2D" unique_id=1263871362]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1112570088]
+texture = SubResource("AtlasTexture_sfnl1")
+centered = false

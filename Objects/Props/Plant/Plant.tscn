@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cclwx8ahyma8x"]
+
+[ext_resource type="Texture2D" uid="uid://b55stfgr7b5j0" path="res://Resources/Images/Elements/misc_props.png" id="1_soryu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piixx"]
+atlas = ExtResource("1_soryu")
+region = Rect2(0, 0, 154, 423)
+
+[node name="Plant" type="Node2D" unique_id=1200559839]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=980783395]
+texture = SubResource("AtlasTexture_piixx")
+centered = false

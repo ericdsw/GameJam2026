@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://befc3jb3p45ck"]
+
+[ext_resource type="Script" uid="uid://wvdj8cc0se3y" path="res://Objects/Props/Incense/Smoke/Smoke.gd" id="1_gph8t"]
+[ext_resource type="Texture2D" uid="uid://1wahj1xmxlsc" path="res://Resources/Images/Elements/incense.png" id="1_yxn2r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnmei"]
+atlas = ExtResource("1_yxn2r")
+region = Rect2(217.5, 40.240005, 69.04599, 65.004)
+
+[node name="Smoke" type="Node2D" unique_id=542441916 node_paths=PackedStringArray("smoke_sprite", "apparent_motion_raycast")]
+self_modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_gph8t")
+smoke_sprite = NodePath("Smoke")
+apparent_motion_raycast = NodePath("ApparentMotion")
+
+[node name="Smoke" type="Sprite2D" parent="." unique_id=301029908]
+texture = SubResource("AtlasTexture_nnmei")
+centered = false
+
+[node name="ApparentMotion" type="RayCast2D" parent="." unique_id=843744320]
+visible = false

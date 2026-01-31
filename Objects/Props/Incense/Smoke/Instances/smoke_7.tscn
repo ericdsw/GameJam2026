@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bx3blmh86cco2"]
+
+[ext_resource type="PackedScene" uid="uid://befc3jb3p45ck" path="res://Objects/Props/Incense/Smoke/Smoke.tscn" id="1_l1qa2"]
+[ext_resource type="Texture2D" uid="uid://1wahj1xmxlsc" path="res://Resources/Images/Elements/incense.png" id="2_novfw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ywj8"]
+atlas = ExtResource("2_novfw")
+region = Rect2(250, 417, 39, 34)
+
+[node name="smoke_7" unique_id=542441916 instance=ExtResource("1_l1qa2")]
+
+[node name="Smoke" parent="." index="0" unique_id=301029908]
+texture = SubResource("AtlasTexture_6ywj8")
+offset = Vector2(-38, 0)
+
+[node name="ApparentMotion" parent="." index="1" unique_id=843744320]
+target_position = Vector2(-47, 38)

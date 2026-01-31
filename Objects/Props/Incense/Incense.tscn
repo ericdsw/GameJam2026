@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cgvxhele8ddbe"]
+
+[ext_resource type="Texture2D" uid="uid://1wahj1xmxlsc" path="res://Resources/Images/Elements/incense.png" id="1_eiycp"]
+[ext_resource type="Script" uid="uid://b5ovl38dru1h1" path="res://Objects/Props/Incense/Incense.gd" id="2_r3geb"]
+[ext_resource type="PackedScene" uid="uid://u7fmwrpsxyl7" path="res://Objects/Props/Incense/Smoke/Instances/smoke_1.tscn" id="3_gxh4d"]
+[ext_resource type="PackedScene" uid="uid://v85ioxta361l" path="res://Objects/Props/Incense/Smoke/Instances/smoke_2.tscn" id="4_7e7ug"]
+[ext_resource type="PackedScene" uid="uid://bmyl25gbwahni" path="res://Objects/Props/Incense/Smoke/Instances/smoke_3.tscn" id="5_yh1ud"]
+[ext_resource type="PackedScene" uid="uid://bcakc17odycgx" path="res://Objects/Props/Incense/Smoke/Instances/smoke_4.tscn" id="6_5jm5r"]
+[ext_resource type="PackedScene" uid="uid://bfvjrwji3imws" path="res://Objects/Props/Incense/Smoke/Instances/smoke_5.tscn" id="7_obuuk"]
+[ext_resource type="PackedScene" uid="uid://byh7enudh0e26" path="res://Objects/Props/Incense/Smoke/Instances/smoke_6.tscn" id="8_if6b6"]
+[ext_resource type="PackedScene" uid="uid://bx3blmh86cco2" path="res://Objects/Props/Incense/Smoke/Instances/smoke_7.tscn" id="9_gyjsi"]
+[ext_resource type="PackedScene" uid="uid://ckn1q117a6423" path="res://Objects/Props/Incense/Smoke/Instances/smoke_8.tscn" id="10_xomo1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3geb"]
+atlas = ExtResource("1_eiycp")
+region = Rect2(0, 0, 205.11, 334.966)
+
+[node name="Incense" type="Sprite2D" unique_id=768750567 node_paths=PackedStringArray("smokes")]
+texture = SubResource("AtlasTexture_r3geb")
+script = ExtResource("2_r3geb")
+smokes = [NodePath("Smoke_1"), NodePath("Smoke_2"), NodePath("smoke_3"), NodePath("smoke_4"), NodePath("smoke_5"), NodePath("smoke_6"), NodePath("smoke_7"), NodePath("smoke_8")]
+regular_smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+mystical_smoke_color = Color(0.78335994, 0.51839995, 0.96, 1)
+
+[node name="Smoke_1" parent="." unique_id=542441916 instance=ExtResource("3_gxh4d")]
+position = Vector2(-185, -132)
+smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+animate_in_editor = true
+
+[node name="Smoke_2" parent="." unique_id=874851961 instance=ExtResource("4_7e7ug")]
+position = Vector2(0, -54)
+smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+animate_in_editor = true
+
+[node name="smoke_3" parent="." unique_id=1047280089 instance=ExtResource("5_yh1ud")]
+position = Vector2(-56, -90)
+smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+animate_in_editor = true
+
+[node name="smoke_4" parent="." unique_id=72132108 instance=ExtResource("6_5jm5r")]
+position = Vector2(29, -80)
+smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+animate_in_editor = true
+
+[node name="smoke_5" parent="." unique_id=1799984719 instance=ExtResource("7_obuuk")]
+position = Vector2(-73, -136)
+smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+animate_in_editor = true
+
+[node name="smoke_6" parent="." unique_id=103485385 instance=ExtResource("8_if6b6")]
+position = Vector2(8, -71)
+smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+animate_in_editor = true
+
+[node name="smoke_7" parent="." unique_id=1052656965 instance=ExtResource("9_gyjsi")]
+position = Vector2(-64, -72)
+smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+animate_in_editor = true
+
+[node name="smoke_8" parent="." unique_id=1181885362 instance=ExtResource("10_xomo1")]
+position = Vector2(7, -81)
+smoke_color = Color(0.7784455, 0.7784455, 0.7784455, 1)
+animate_in_editor = true

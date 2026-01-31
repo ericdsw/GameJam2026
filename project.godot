@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="GameJam2026"
+run/main_scene="uid://dy5efs386rt2q"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/dpi/allow_hidpi=false
 
 [physics]
 

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://byswwnp8lyn1k"]
+
+[ext_resource type="Script" uid="uid://c00bwv7mfsu67" path="res://Screens/MainScreen/MainScreen.gd" id="1_q1lju"]
+
+[node name="MainScreen" type="Node2D" unique_id=1479209338]
+script = ExtResource("1_q1lju")
+
+[node name="Label" type="Label" parent="." unique_id=1297327131]
+offset_left = 588.0
+offset_top = 202.0
+offset_right = 695.0
+offset_bottom = 225.0
+text = "MAIN SCREEN"
+
+[node name="Button" type="Button" parent="." unique_id=635666251]
+offset_left = 536.0
+offset_top = 307.0
+offset_right = 751.0
+offset_bottom = 372.0
+text = "Start Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

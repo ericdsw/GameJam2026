@@ -3,8 +3,6 @@ extends Node
 
 
 @export var main_screen_scene: PackedScene
-@export var face_screen_scene: PackedScene
-@export var game_over_screen_scene: PackedScene
 
 
 var _current_screen: BaseScreen
@@ -29,7 +27,5 @@ func _delete_previous_screen() -> void:
 		_current_screen.queue_free()
 
 
-func _on_navigate_to_screen(screen_name: String) -> void:
-	match screen_name:
-		"face_screen":
-			_go_to_screen(face_screen_scene)
+func _on_navigate_to_screen(screen_resource: PackedScene) -> void:
+	_go_to_screen(screen_resource)

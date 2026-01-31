@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3n2nt44q0jua"]
 
-[ext_resource type="Texture2D" uid="uid://cahppwc7mo73b" path="res://normal_face_mock.png" id="1_gnrgg"]
+[ext_resource type="Texture2D" uid="uid://cyxvu5dglo8kg" path="res://Resources/Images/Face/placeholder_face.png" id="1_gnrgg"]
 
 [node name="Face" type="Node2D" unique_id=880044491]
 

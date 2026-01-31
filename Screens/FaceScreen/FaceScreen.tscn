@@ -2,12 +2,34 @@
 
 [ext_resource type="Script" uid="uid://0aacoajwpd32" path="res://Screens/FaceScreen/FaceScreen.gd" id="1_35dty"]
 [ext_resource type="PackedScene" uid="uid://c3n2nt44q0jua" path="res://Objects/Face/Face.tscn" id="1_rnw1p"]
+[ext_resource type="Texture2D" uid="uid://c4k1cfifklqh6" path="res://Resources/Images/Elements/towel.png" id="2_8fhud"]
 [ext_resource type="PackedScene" uid="uid://csgwsfnk31gor" path="res://Objects/Mask/Mask.tscn" id="3_ubqpy"]
 
-[node name="FaceScreen" type="Node2D" unique_id=1155746004]
+[node name="FaceScreen" type="Control" unique_id=32535975]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_35dty")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="ColorRect" parent="." unique_id=1316918570]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7372549, 0.8, 0.8784314, 1)
+
+[node name="Towel" type="Sprite2D" parent="." unique_id=1807603197]
+position = Vector2(786.5, 299.5)
+texture = ExtResource("2_8fhud")
 
 [node name="Face" parent="." unique_id=880044491 instance=ExtResource("1_rnw1p")]
-position = Vector2(667, 368)
+position = Vector2(787.5, 426.5)
 
 [node name="Mask" parent="." unique_id=775272652 instance=ExtResource("3_ubqpy")]
+position = Vector2(118, 324)

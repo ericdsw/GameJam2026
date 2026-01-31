@@ -1,5 +1,6 @@
 class_name BaseScreen
-extends Node2D
+extends Control
 
 
-signal navigate_to_screen(screen_name)
+@warning_ignore("unused_signal")
+signal navigate_to_screen(screen_resource)

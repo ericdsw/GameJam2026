@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds4m6ed0n4g6x"
-path="res://.godot/imported/mask.png-b945516e6475612c1c4c3b4f8dd0bdc6.ctex"
+uid="uid://bpdp8xtbgg55w"
+path="res://.godot/imported/hexagon_brown_dark.png-ff2d19ac515a459c2dcd1d0152cbbd33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mask.png"
-dest_files=["res://.godot/imported/mask.png-b945516e6475612c1c4c3b4f8dd0bdc6.ctex"]
+source_file="res://Resources/Images/UI/Buttons/hexagon_brown_dark.png"
+dest_files=["res://.godot/imported/hexagon_brown_dark.png-ff2d19ac515a459c2dcd1d0152cbbd33.ctex"]
 
 [params]
 

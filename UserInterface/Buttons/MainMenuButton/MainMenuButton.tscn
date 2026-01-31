@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c0eyhjsqbcycs"]
+
+[ext_resource type="Script" uid="uid://c36ihq5irjku1" path="res://UserInterface/Buttons/MainMenuButton/MainMenuButton.gd" id="1_nps8r"]
+[ext_resource type="Texture2D" uid="uid://dmbov8pc7sx07" path="res://Resources/Images/UI/Selection/main_menu_selection.png" id="2_ayiny"]
+
+[node name="MainMenuButton" type="Control" unique_id=1563232101 node_paths=PackedStringArray("selection_rect", "button_label")]
+custom_minimum_size = Vector2(400, 55)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 55.0
+script = ExtResource("1_nps8r")
+button_text = "Main Menu"
+inactive_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+active_color = Color(0.7372549, 0.8, 0.8784314, 1)
+selection_rect = NodePath("TextureRect")
+button_label = NodePath("Label")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=756266957]
+modulate = Color(0.19215687, 0.18431373, 0.18431373, 0)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -100.0
+offset_right = 400.0
+offset_bottom = 55.0
+texture = ExtResource("2_ayiny")
+
+[node name="Label" type="Label" parent="." unique_id=1467804821]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+horizontal_alignment = 2
+vertical_alignment = 1

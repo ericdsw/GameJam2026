@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://csgwsfnk31gor"]
 
 [ext_resource type="Script" uid="uid://bigpkf5k3pkjf" path="res://Objects/Mask/Mask.gd" id="1_uxyop"]
-[ext_resource type="Texture2D" uid="uid://ds4m6ed0n4g6x" path="res://mask.png" id="2_3kh16"]
+[ext_resource type="Texture2D" uid="uid://ds4m6ed0n4g6x" path="res://Resources/Images/Face/mask.png" id="2_3kh16"]
 [ext_resource type="BitMap" uid="uid://lf7vi41k8kgl" path="res://mask_click_mask.png" id="3_3kh16"]
 
 [node name="Mask" type="Node2D" unique_id=775272652]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3djeuxfufev5"
-path="res://.godot/imported/die_face_mock.png-82cfe5673efe9ad156a622fca7c1bdc5.ctex"
+uid="uid://sfot2c6likdl"
+path="res://.godot/imported/hand_closed.png-770dff39f85a8b82eabf982214993d1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://die_face_mock.png"
-dest_files=["res://.godot/imported/die_face_mock.png-82cfe5673efe9ad156a622fca7c1bdc5.ctex"]
+source_file="res://Resources/Images/UI/Mouse/hand_closed.png"
+dest_files=["res://.godot/imported/hand_closed.png-770dff39f85a8b82eabf982214993d1e.ctex"]
 
 [params]
 

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://mi8l2fus25w0"]
+
+[ext_resource type="Script" uid="uid://bq3gl05n2ql2x" path="res://UserInterface/TransitionCover/TransitionCover.gd" id="1_lmk6l"]
+[ext_resource type="Shader" uid="uid://c166cxlalqp82" path="res://UserInterface/TransitionCover/TransitionCover.gdshader" id="1_mojcw"]
+[ext_resource type="Texture2D" uid="uid://brt7nn70argwu" path="res://Resources/Images/UI/Transition/sideways_transition.png" id="2_83xdi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_83xdi"]
+shader = ExtResource("1_mojcw")
+shader_parameter/cutoff = 0.54000002565
+shader_parameter/smooth_size = 0.2000000095
+shader_parameter/mask = ExtResource("2_83xdi")
+
+[node name="TransitionCover" type="Control" unique_id=536562858 node_paths=PackedStringArray("cover")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lmk6l")
+cover = NodePath("Cover")
+
+[node name="Cover" type="ColorRect" parent="." unique_id=1665612611]
+material = SubResource("ShaderMaterial_83xdi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.16, 0.16, 1)

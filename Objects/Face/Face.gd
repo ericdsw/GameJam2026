@@ -6,6 +6,7 @@ extends Node2D
 @export var base_sprite: Sprite2D
 @export var eyes_sprite: Sprite2D
 @export var hairs_sprite: Sprite2D
+@export var mask_sprite: Sprite2D
 
 
 @export_range(1, 3) var base_variant := 1:
@@ -28,6 +29,10 @@ extends Node2D
 	set(new_val):
 		hair_color = new_val
 		_sync_face.call_deferred()
+@export var mask_visible := false:
+	set(new_val):
+		mask_visible = new_val
+		_sync_face.call_deferred()
 @export var skin_colors : Array[Color]
 @export var hair_colors : Array[Color]
 
@@ -35,6 +40,9 @@ extends Node2D
 
 
 func _sync_face() -> void:
+
+	mask_sprite.visible = mask_visible
+
 	base_sprite.frame = base_variant - 1
 	eyes_sprite.frame = eyes_variant - 1
 	hairs_sprite.frame = hair_variant - 1

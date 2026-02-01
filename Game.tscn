@@ -2,11 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cyb1l0j454j5h" path="res://Game.gd" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://byswwnp8lyn1k" path="res://Screens/MainScreen/MainScreen.tscn" id="2_sb48q"]
-[ext_resource type="PackedScene" uid="uid://mrx75ou03kmh" path="res://Screens/FaceScreen/FaceScreen.tscn" id="3_t88pq"]
-[ext_resource type="PackedScene" uid="uid://bp02qsokypiyh" path="res://Screens/GameOver/GameOver.tscn" id="4_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://mi8l2fus25w0" path="res://UserInterface/TransitionCover/TransitionCover.tscn" id="3_u44n3"]
 
 [node name="Game" type="Node" unique_id=1179616670]
 script = ExtResource("1_wbfu4")
 main_screen_scene = ExtResource("2_sb48q")
-face_screen_scene = ExtResource("3_t88pq")
-game_over_screen_scene = ExtResource("4_r0x5m")
+transition_cover_scene = ExtResource("3_u44n3")

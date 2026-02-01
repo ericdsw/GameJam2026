@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cclwx8ahyma8x" path="res://Objects/Props/Plant/Plant.tscn" id="6_psvc1"]
 [ext_resource type="PackedScene" uid="uid://cjt8pfkw7wppo" path="res://Objects/Props/WoodThing/WoodThing.tscn" id="7_eji6o"]
 [ext_resource type="PackedScene" uid="uid://del4lonx4vh2m" path="res://Objects/Props/CrystalBall/CrystalBall.tscn" id="8_dum88"]
+[ext_resource type="Texture2D" uid="uid://c87isx6ets1hd" path="res://Resources/Images/Elements/mask_basin.png" id="9_eji6o"]
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("out_of_bounds_mask_start_position", "mask_start_position")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("mask_start_position", "face", "face_in_position", "face_out_position", "mask_on_face_pos")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,8 +19,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_35dty")
 mask_scene = ExtResource("3_ubqpy")
-out_of_bounds_mask_start_position = NodePath("OutOfBoundsMaskStartPosition")
 mask_start_position = NodePath("MaskStartPosition")
+face = NodePath("Face")
+face_in_position = NodePath("FaceInPosition")
+face_out_position = NodePath("FaceOutPosition")
+mask_on_face_pos = NodePath("MaskOnFacePos")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1316918570]
@@ -30,30 +34,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.7372549, 0.8, 0.8784314, 1)
+metadata/_edit_lock_ = true
 
 [node name="Towel" type="Sprite2D" parent="." unique_id=1807603197]
-position = Vector2(722.5, 365.5)
+position = Vector2(898.5, 365.5)
 texture = ExtResource("2_8fhud")
 
-[node name="Face" parent="." unique_id=880044491 instance=ExtResource("1_rnw1p")]
-position = Vector2(363.5, 147.5)
-hair_color = 1
+[node name="FaceInPosition" type="Marker2D" parent="." unique_id=1230538096]
+position = Vector2(859.5, 435.5)
 
-[node name="OutOfBoundsMaskStartPosition" type="Marker2D" parent="." unique_id=1071863705]
-position = Vector2(-528, -28)
+[node name="FaceOutPosition" type="Marker2D" parent="." unique_id=1632641289]
+position = Vector2(859.5, 1107.5)
+
+[node name="MaskOnFacePos" type="Marker2D" parent="." unique_id=1376672728]
+position = Vector2(883, 388)
 
 [node name="MaskStartPosition" type="Marker2D" parent="." unique_id=533221031]
-position = Vector2(-126, 124)
+position = Vector2(215, 513)
 
-[node name="Plant" parent="." unique_id=1200559839 instance=ExtResource("6_psvc1")]
-position = Vector2(990, -5)
-
-[node name="Incense" parent="." unique_id=768750567 instance=ExtResource("5_bohhc")]
-position = Vector2(1177, 203)
+[node name="Face" parent="." unique_id=880044491 instance=ExtResource("1_rnw1p")]
+position = Vector2(859.5, 435.5)
+hair_color = 1
 
 [node name="WoodThing" parent="." unique_id=1663942116 instance=ExtResource("7_eji6o")]
-position = Vector2(1081, 395)
+position = Vector2(341, 3)
+rotation = 1.5707964
+
+[node name="Plant" parent="." unique_id=1200559839 instance=ExtResource("6_psvc1")]
+position = Vector2(1325, -45)
+rotation = 1.5707964
+
+[node name="Incense" parent="." unique_id=768750567 instance=ExtResource("5_bohhc")]
+position = Vector2(424, 166)
 
 [node name="CrystalBall" parent="." unique_id=1263871362 instance=ExtResource("8_dum88")]
-position = Vector2(297, -1)
+position = Vector2(495, 3)
 scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1906852054]
+position = Vector2(208, 496)
+texture = ExtResource("9_eji6o")

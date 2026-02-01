@@ -1,41 +1,41 @@
 [gd_scene format=3 uid="uid://c3n2nt44q0jua"]
 
 [ext_resource type="Script" uid="uid://c5o3mvrla3vyj" path="res://Objects/Face/Face.gd" id="1_br0od"]
-[ext_resource type="Texture2D" uid="uid://cyxvu5dglo8kg" path="res://Resources/Images/Face/placeholder_face.png" id="1_gnrgg"]
 [ext_resource type="Texture2D" uid="uid://cxd2w4omdshgb" path="res://Resources/Images/Face/Base/face_base.png" id="2_22hb8"]
 [ext_resource type="Texture2D" uid="uid://dl3d4q76jk2g2" path="res://Resources/Images/Face/Base/eyes.png" id="3_edr8q"]
+[ext_resource type="Texture2D" uid="uid://ds4m6ed0n4g6x" path="res://Resources/Images/Face/mask.png" id="4_br0od"]
 [ext_resource type="Texture2D" uid="uid://bms7bpt5m0jm5" path="res://Resources/Images/Face/Base/hairs.png" id="4_oreo6"]
 
-[node name="Face" type="Node2D" unique_id=880044491 node_paths=PackedStringArray("base_sprite", "eyes_sprite", "hairs_sprite")]
+[node name="Face" type="Node2D" unique_id=880044491 node_paths=PackedStringArray("base_sprite", "eyes_sprite", "hairs_sprite", "mask_sprite")]
 script = ExtResource("1_br0od")
 base_sprite = NodePath("Base")
 eyes_sprite = NodePath("Eyes")
 hairs_sprite = NodePath("Hairs")
-hair_variant = 2
-hair_color = 2
+mask_sprite = NodePath("MaskOn")
+eyes_variant = 3
+skin_color = 3
+hair_color = 5
 skin_colors = Array[Color]([Color(1, 0.9137255, 0.76862746, 1), Color(0.6392157, 0.58431375, 0.5137255, 1), Color(0.27058825, 0.22745098, 0.17254902, 1), Color(1, 0.972549, 0.9411765, 1), Color(0.52156866, 0.4392157, 0.3372549, 1)])
 hair_colors = Array[Color]([Color(0.8784314, 0.8784314, 0.44705883, 1), Color(0.07058824, 0.07058824, 0.07058824, 1), Color(0.7607843, 0.39607844, 0.21176471, 1), Color(0.7294118, 0.7294118, 0.7294118, 1), Color(0.16078432, 0.12941177, 0.09411765, 1), Color(0.17254902, 0.39215687, 0.52156866, 1)])
 
-[node name="Guide" type="Sprite2D" parent="." unique_id=2147298855]
-visible = false
-texture = ExtResource("1_gnrgg")
-
 [node name="Base" type="Sprite2D" parent="." unique_id=1301879379]
-modulate = Color(1, 0.9137255, 0.76862746, 1)
+modulate = Color(0.27058825, 0.22745098, 0.17254902, 1)
 texture = ExtResource("2_22hb8")
-centered = false
 hframes = 3
 
 [node name="Eyes" type="Sprite2D" parent="." unique_id=231694462]
-position = Vector2(186, 143)
+position = Vector2(18, -62)
 texture = ExtResource("3_edr8q")
-centered = false
 hframes = 3
+frame = 2
+
+[node name="MaskOn" type="Sprite2D" parent="." unique_id=1107964228]
+visible = false
+position = Vector2(29, -37)
+texture = ExtResource("4_br0od")
 
 [node name="Hairs" type="Sprite2D" parent="." unique_id=1155135631]
-modulate = Color(0.07058824, 0.07058824, 0.07058824, 1)
-position = Vector2(95, -84)
+modulate = Color(0.16078432, 0.12941177, 0.09411765, 1)
+position = Vector2(6, -29)
 texture = ExtResource("4_oreo6")
-centered = false
 hframes = 3
-frame = 1

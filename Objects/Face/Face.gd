@@ -8,6 +8,8 @@ extends Node2D
 @export var hairs_sprite: Sprite2D
 @export var mask_sprite: Sprite2D
 @export var mask_animation_player: AnimationPlayer
+@export var large_rip_player: AudioStreamPlayer
+@export var scream_player: AudioStreamPlayer
 
 
 @export_range(1, 3) var base_variant := 1:
@@ -37,6 +39,9 @@ extends Node2D
 @export var skin_colors : Array[Color]
 @export var hair_colors : Array[Color]
 
+
+var _cur_face_randomizer_result: FaceRandomizer.FaceRandomizerResult = null
+
 @export_tool_button("randomize", "Callable") var randomize_action = _randomize
 
 
@@ -49,6 +54,13 @@ func apply_face_randomizer_result(result: FaceRandomizer.FaceRandomizerResult) -
 	hair_variant = result.hair
 	skin_color = result.skin_color
 	hair_color = result.hair_color
+	_cur_face_randomizer_result = result
+
+
+func matches_result(result: FaceRandomizer.FaceRandomizerResult) -> bool:
+	if _cur_face_randomizer_result == null:
+		return false
+	return result.is_same(_cur_face_randomizer_result)
 
 
 # ================================= Private ================================= #
@@ -60,6 +72,11 @@ func reset_mask() -> void:
 
 func yank_mask_off() -> void:
 	mask_animation_player.play("yank_off")
+
+
+func yank_mask_off_hard() -> void:
+	large_rip_player.play()
+	scream_player.play()
 
 
 func _sync_face() -> void:

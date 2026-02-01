@@ -14,8 +14,106 @@
 [ext_resource type="PackedScene" uid="uid://bho7k3idhc5g0" path="res://UserInterface/JankIndictor/JankIndicator.tscn" id="12_8a6gc"]
 [ext_resource type="PackedScene" uid="uid://b30a2vivsyise" path="res://UserInterface/Health/Health.tscn" id="13_m5akd"]
 [ext_resource type="PackedScene" uid="uid://u52lmrb4u102" path="res://Objects/TargetPreview/TargetPreview.tscn" id="14_l6s4y"]
+[ext_resource type="Texture2D" uid="uid://u5omq0qj4mrb" path="res://Resources/Images/UI/Overlays/ominous_overlay.png" id="15_islxt"]
+[ext_resource type="AudioStream" uid="uid://cqro78j18gpuf" path="res://Resources/Sounds/SFX/heartbeat.wav" id="16_df5k1"]
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "jank_indicator", "health", "target_preview")]
+[sub_resource type="Animation" id="Animation_df5k1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7etep"]
+resource_name = "default"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 0.78431374)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81aqj"]
+_data = {
+&"RESET": SubResource("Animation_df5k1"),
+&"default": SubResource("Animation_7etep")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_df5k1"]
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_islxt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 720)]
+}
+
+[sub_resource type="Animation" id="Animation_81aqj"]
+resource_name = "enter"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 720), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ra05t"]
+resource_name = "out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 720)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6e5ua"]
+_data = {
+&"RESET": SubResource("Animation_islxt"),
+&"enter": SubResource("Animation_81aqj"),
+&"out": SubResource("Animation_ra05t")
+}
+
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "jank_indicator", "health", "target_preview", "canvas_modulate", "ominous_overlay", "black_rip_color_cover_animation_player", "heartbeat_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,8 +122,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_35dty")
 mask_scene = ExtResource("3_ubqpy")
+max_face_amount = 2
 max_health = 4
+mystical_canvas_modulate_color = Color(0.88235295, 0.6784314, 1, 1)
 game_over_screen_scene_path = "uid://dsrdm8461ak6w"
+final_screen_scene_path = "uid://ptb28t8nnsrc"
+bgm_path = "uid://buttmbep0mu17"
+ominous_bgm_path = "uid://doo5p603v54ec"
 drop_region = NodePath("MaskOnFacePos/DropRegion")
 face = NodePath("Face")
 mask_start_position = NodePath("MaskStartPosition")
@@ -39,6 +142,10 @@ face_randomizer = NodePath("FaceRandomizer")
 jank_indicator = NodePath("JankIndicator")
 health = NodePath("Health")
 target_preview = NodePath("TargetPreview")
+canvas_modulate = NodePath("CanvasModulate")
+ominous_overlay = NodePath("OminousOverlay")
+black_rip_color_cover_animation_player = NodePath("BlackCover/AnimationPlayer")
+heartbeat_player = NodePath("HeartbeatPlayer")
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1919199873]
@@ -113,6 +220,20 @@ texture = ExtResource("9_eji6o")
 
 [node name="FaceRandomizer" parent="." unique_id=235716661 instance=ExtResource("10_dum88")]
 
+[node name="OminousOverlay" type="TextureRect" parent="." unique_id=650126520]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_islxt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OminousOverlay" unique_id=383223796]
+libraries/ = SubResource("AnimationLibrary_81aqj")
+autoplay = &"default"
+
 [node name="JankIndicator" parent="." unique_id=435323851 instance=ExtResource("12_8a6gc")]
 position = Vector2(988, 513)
 
@@ -131,5 +252,28 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="TargetPreview" parent="." unique_id=430050172 instance=ExtResource("14_l6s4y")]
-position = Vector2(467.00003, 582)
+position = Vector2(446.00003, 827)
 scale = Vector2(1.5, 1.5)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1498846848]
+
+[node name="BlackCover" type="ColorRect" parent="." unique_id=107133495]
+material = SubResource("CanvasItemMaterial_df5k1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 720.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackCover" unique_id=142473227]
+libraries/ = SubResource("AnimationLibrary_6e5ua")
+autoplay = &"out"
+
+[node name="HeartbeatPlayer" type="AudioStreamPlayer" parent="." unique_id=2129126165]
+stream = ExtResource("16_df5k1")
+volume_db = 2.0

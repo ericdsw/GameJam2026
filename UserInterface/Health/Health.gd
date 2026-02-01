@@ -32,3 +32,4 @@ func _sync_health() -> void:
 		else:
 			_texture.texture = empty_health_texture
 		add_child(_texture)
+		move_child(_texture, 0)

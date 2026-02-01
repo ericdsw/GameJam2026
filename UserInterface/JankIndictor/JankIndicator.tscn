@@ -198,6 +198,7 @@ strength_indicator = NodePath("StrengthIndicator")
 
 [node name="StrengthIndicator" parent="." unique_id=1359806308 instance=ExtResource("2_56daf")]
 position = Vector2(72, 21)
+max_safe_zone = 240.0
 
 [node name="JankIndicatorSprite" type="Sprite2D" parent="." unique_id=435323851]
 material = SubResource("ShaderMaterial_vmkax")

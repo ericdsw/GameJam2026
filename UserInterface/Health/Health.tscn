@@ -6,7 +6,7 @@
 
 [node name="Health" type="HBoxContainer" unique_id=957640053]
 script = ExtResource("1_vxidx")
-max_health = 6
-current_health = 6
+max_health = 4
+current_health = 4
 full_health_texture = ExtResource("2_f4yo1")
 empty_health_texture = ExtResource("3_11vri")

@@ -15,8 +15,13 @@ enum States {
 @export var mask_scene: PackedScene
 @export var max_face_amount := 5
 @export var max_health := 6
+@export var regular_canvas_modulate_color := Color.WHITE
+@export var mystical_canvas_modulate_color := Color.WHITE
 
 @export_file("*.tscn") var game_over_screen_scene_path := ""
+@export_file("*.tscn") var final_screen_scene_path := ""
+@export_file("*.wav") var bgm_path := ""
+@export_file("*.wav") var ominous_bgm_path := ""
 
 @export_group("Node References")
 @export var drop_region: DropRegion
@@ -32,6 +37,10 @@ enum States {
 @export var jank_indicator: JankIndicator
 @export var health: Health
 @export var target_preview: TargetPreview
+@export var canvas_modulate: CanvasModulate
+@export var ominous_overlay: TextureRect
+@export var black_rip_color_cover_animation_player: AnimationPlayer
+@export var heartbeat_player: AudioStreamPlayer
 
 
 var _current_state := States.BeforeStarting
@@ -54,6 +63,7 @@ var _target_face : FaceRandomizer.FaceRandomizerResult = null
 
 func _ready() -> void:
 
+	_current_health = max_health
 	_sync_health()
 
 	_faces_to_show = face_randomizer.generate_random_face_set(max_face_amount)
@@ -76,7 +86,7 @@ func _ready() -> void:
 	target_preview.mouse_focused.connect(_on_target_preview_mouse_focused)
 	target_preview.mouse_unfocused.connect(_on_target_preview_mouse_unfocused)
 
-	navigation_finished()
+	ominous_overlay.modulate.a = 0.0
 
 
 # ================================= Public ================================== #
@@ -194,11 +204,18 @@ func _go_to_game_over() -> void:
 	navigate_to_screen.emit(load(game_over_screen_scene_path))
 
 
-
 # ================================ Callbacks ================================ #
 
 
 func _on_face_slide_tween_completed() -> void:
+	if face.matches_result(_target_face):
+		update_bgm.emit(ominous_bgm_path, 0.1, 0.0, 0.5)
+		heartbeat_player.play()
+		var _tween := create_tween()
+		_tween.tween_property(canvas_modulate, "color", mystical_canvas_modulate_color, 0.5)
+		_tween.parallel()\
+				.tween_property(ominous_overlay, "modulate:a", 1.0, 0.5)
+		await _tween.finished
 	_start_dragging_mask_state()
 
 
@@ -219,18 +236,26 @@ func _on_mask_dropped() -> void:
 
 func _on_face_slide_out_tween_completed() -> void:
 	_current_face_offset += 1
-	if _current_face_offset < _faces_to_show.size() - 1:
+	if _current_face_offset < _faces_to_show.size():
 		_slide_face_in()
 	else:
-		print("faces ran out")
+		navigate_to_screen.emit(load(final_screen_scene_path))
 
 
-func _on_jank_indicator_success() -> void:
-	face.yank_mask_off()
-	await create_tween().tween_interval(0.7).finished
-	var _jank_ind_tween := create_tween()
-	_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
-	_slide_face_out_after_round()
+func _on_jank_indicator_success() -> void:	
+
+	if face.matches_result(_target_face):
+		update_bgm.emit("", 0.0, 0.0, 0.0)
+		face.yank_mask_off_hard()
+		black_rip_color_cover_animation_player.play("enter")
+		await create_tween().tween_interval(2.0).finished
+		navigate_to_screen.emit(load(final_screen_scene_path))
+	else:
+		face.yank_mask_off()
+		await create_tween().tween_interval(0.7).finished
+		var _jank_ind_tween := create_tween()
+		_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
+		_slide_face_out_after_round()
 
 
 func _on_jank_indicator_failed() -> void:

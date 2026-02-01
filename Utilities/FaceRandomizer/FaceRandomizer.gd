@@ -29,3 +29,12 @@ class FaceRandomizerResult extends RefCounted:
 		for prop_name in props.keys():
 			if prop_name in self:
 				set(prop_name, props[prop_name])
+	
+	func is_same(other_result: FaceRandomizerResult) -> bool:
+		return (
+			face == other_result.face and
+			eyes == other_result.eyes and
+			hair == other_result.hair and
+			skin_color == other_result.skin_color and
+			hair_color == other_result.hair_color
+		)

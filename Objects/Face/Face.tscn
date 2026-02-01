@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dl3d4q76jk2g2" path="res://Resources/Images/Face/Base/eyes.png" id="3_edr8q"]
 [ext_resource type="Texture2D" uid="uid://ds4m6ed0n4g6x" path="res://Resources/Images/Face/mask.png" id="4_br0od"]
 [ext_resource type="Texture2D" uid="uid://bms7bpt5m0jm5" path="res://Resources/Images/Face/Base/hairs.png" id="4_oreo6"]
+[ext_resource type="AudioStream" uid="uid://b55an25d5yi4k" path="res://Resources/Sounds/SFX/rip_small.wav" id="5_our6e"]
+[ext_resource type="AudioStream" uid="uid://d3px5exkerskb" path="res://Resources/Sounds/SFX/scream.wav" id="7_co5yw"]
+[ext_resource type="AudioStream" uid="uid://b6j3axocmsipu" path="res://Resources/Sounds/SFX/rip_large.wav" id="7_dy3sg"]
 
 [sub_resource type="Animation" id="Animation_br0od"]
 length = 0.001
@@ -159,6 +162,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SmallRipPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_our6e")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dy3sg"]
 _data = {
@@ -167,13 +185,15 @@ _data = {
 &"yank_off": SubResource("Animation_co5yw")
 }
 
-[node name="Face" type="Node2D" unique_id=880044491 node_paths=PackedStringArray("base_sprite", "eyes_sprite", "hairs_sprite", "mask_sprite", "mask_animation_player")]
+[node name="Face" type="Node2D" unique_id=880044491 node_paths=PackedStringArray("base_sprite", "eyes_sprite", "hairs_sprite", "mask_sprite", "mask_animation_player", "large_rip_player", "scream_player")]
 script = ExtResource("1_br0od")
 base_sprite = NodePath("Base")
 eyes_sprite = NodePath("Eyes")
 hairs_sprite = NodePath("Hairs")
 mask_sprite = NodePath("MaskOn")
 mask_animation_player = NodePath("MaskOn/AnimationPlayer")
+large_rip_player = NodePath("LargeRipPlayer")
+scream_player = NodePath("ScreamPlayer")
 eyes_variant = 3
 skin_color = 3
 hair_color = 5
@@ -192,6 +212,7 @@ hframes = 3
 frame = 2
 
 [node name="MaskOn" type="Sprite2D" parent="." unique_id=1107964228]
+visible = false
 position = Vector2(29, -37)
 texture = ExtResource("4_br0od")
 
@@ -203,3 +224,13 @@ modulate = Color(0.16078432, 0.12941177, 0.09411765, 1)
 position = Vector2(6, -29)
 texture = ExtResource("4_oreo6")
 hframes = 3
+
+[node name="SmallRipPlayer" type="AudioStreamPlayer" parent="." unique_id=2001204543]
+
+[node name="LargeRipPlayer" type="AudioStreamPlayer" parent="." unique_id=318491762]
+stream = ExtResource("7_dy3sg")
+volume_db = -8.0
+
+[node name="ScreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1415995213]
+stream = ExtResource("7_co5yw")
+volume_db = -12.0

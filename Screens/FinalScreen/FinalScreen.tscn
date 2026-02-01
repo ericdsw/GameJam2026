@@ -1,9 +1,51 @@
 [gd_scene format=3 uid="uid://ptb28t8nnsrc"]
 
-[node name="FinalScreen" type="Control" unique_id=576001277]
+[ext_resource type="Script" uid="uid://1h130255fmqp" path="res://Screens/FinalScreen/FinalScreen.gd" id="1_b6jgc"]
+[ext_resource type="Texture2D" uid="uid://cudmgrsb5fi6j" path="res://Resources/Images/UI/Overlays/final_screen.png" id="2_wk0yk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wk0yk"]
+font_size = 29
+font_color = Color(0.57, 0.57, 0.57, 1)
+
+[node name="FinalScreen" type="Control" unique_id=576001277 node_paths=PackedStringArray("color_cover", "tbc_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_b6jgc")
+color_cover = NodePath("ColorCover")
+tbc_label = NodePath("TBCLabel")
+bgm_path = "uid://doo5p603v54ec"
+main_screen_path = "uid://byswwnp8lyn1k"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=989335310]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wk0yk")
+
+[node name="ColorCover" type="ColorRect" parent="." unique_id=1098916451]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="TBCLabel" type="Label" parent="." unique_id=128762979]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 53.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "To be continued..."
+label_settings = SubResource("LabelSettings_wk0yk")
+horizontal_alignment = 1

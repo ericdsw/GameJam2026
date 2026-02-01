@@ -41,7 +41,7 @@ func _on_click_detector_button_down() -> void:
 		_bar_visibility_tween.kill()
 	_bar_visibility_tween = create_tween()
 	
-	strength_indicator.randomize_safe_area_with_size(70.0)
+	strength_indicator.randomize_safe_area_with_size(100.0)
 	strength_indicator.reset_arrow_pos()
 	_bar_visibility_tween.tween_property(strength_indicator, "modulate:a", 1.0, 0.3)
 	await _bar_visibility_tween.finished

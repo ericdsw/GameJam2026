@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c00bwv7mfsu67" path="res://Screens/MainScreen/MainScreen.gd" id="1_q1lju"]
 [ext_resource type="PackedScene" uid="uid://c0eyhjsqbcycs" path="res://UserInterface/Buttons/MainMenuButton/MainMenuButton.tscn" id="2_k2ber"]
+[ext_resource type="PackedScene" uid="uid://cgvxhele8ddbe" path="res://Objects/Props/Incense/Incense.tscn" id="3_1npaf"]
+[ext_resource type="PackedScene" uid="uid://cclwx8ahyma8x" path="res://Objects/Props/Plant/Plant.tscn" id="4_dc0bu"]
+[ext_resource type="PackedScene" uid="uid://cjt8pfkw7wppo" path="res://Objects/Props/WoodThing/WoodThing.tscn" id="5_4rtxu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q1lju"]
 font_size = 52
@@ -16,6 +19,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q1lju")
 buttons = [NodePath("VBoxContainer/StartGame"), NodePath("VBoxContainer/Credits"), NodePath("VBoxContainer/QuitGame")]
+bgm_path = "uid://buttmbep0mu17"
+metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1242094119]
 layout_mode = 1
@@ -25,6 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.7372549, 0.8, 0.8784314, 1)
+metadata/_edit_lock_ = true
 
 [node name="TopLine" type="ColorRect" parent="Background" unique_id=1779376046]
 custom_minimum_size = Vector2(0, 2)
@@ -80,4 +86,15 @@ right_selection_offset = 64.0
 
 [node name="QuitGame" parent="VBoxContainer" unique_id=2028582430 instance=ExtResource("2_k2ber")]
 layout_mode = 2
+button_text = "Quit Game"
 right_selection_offset = 64.0
+
+[node name="Incense" parent="." unique_id=768750567 instance=ExtResource("3_1npaf")]
+position = Vector2(220, 568)
+
+[node name="Plant" parent="." unique_id=1200559839 instance=ExtResource("4_dc0bu")]
+position = Vector2(-10, 316)
+
+[node name="WoodThing" parent="." unique_id=1663942116 instance=ExtResource("5_4rtxu")]
+position = Vector2(683, 597)
+rotation = 1.5707964

@@ -23,6 +23,7 @@ enum States {
 @export var face_out_position: Marker2D
 @export var mask_on_face_pos: Marker2D
 @export var face_randomizer: FaceRandomizer
+@export var jank_indicator: JankIndicator
 
 
 var _current_state := States.Idle
@@ -43,6 +44,10 @@ func _ready() -> void:
 
 	_faces_to_show = face_randomizer.generate_random_face_set(max_face_amount)
 	_target_face = _faces_to_show[randi_range(3, _faces_to_show.size() - 1)]
+
+	jank_indicator.modulate.a = 0.0
+	jank_indicator.success.connect(_on_jank_indicator_success)
+	jank_indicator.fail.connect(_on_jank_indicator_failed)
 
 	face.global_position = face_out_position.global_position
 	face.mask_visible = false
@@ -80,6 +85,17 @@ func _start_dragging_mask_state() -> void:
 	_mask.draggable = true
 
 
+func _start_jank_state() -> void:
+
+	_current_state = States.Janking
+
+	var _jank_ind_tween := create_tween()
+	_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 1.0, 0.3)
+	await _jank_ind_tween.finished
+
+	jank_indicator.start_detecting_click()
+
+
 func _slide_face_in() -> void:
 	face.scale = Vector2.ONE * 1.04
 	face.apply_face_randomizer_result(_faces_to_show[_current_face_offset])
@@ -98,6 +114,10 @@ func _slide_face_in() -> void:
 func _mask_dropped_successfully() -> void:
 	face.mask_visible = true
 	await create_tween().tween_interval(0.7).finished
+	_start_jank_state()
+
+
+func _slide_face_out_after_round() -> void:
 	if _face_slide_tween != null:
 		_face_slide_tween.kill()
 	_face_slide_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
@@ -141,3 +161,17 @@ func _on_face_slide_out_tween_completed() -> void:
 		_slide_face_in()
 	else:
 		print("faces ran out")
+
+
+func _on_jank_indicator_success() -> void:
+	await create_tween().tween_interval(0.7).finished
+	var _jank_ind_tween := create_tween()
+	_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
+	_slide_face_out_after_round()
+
+
+func _on_jank_indicator_failed() -> void:
+	await create_tween().tween_interval(0.7).finished
+	var _jank_ind_tween := create_tween()
+	_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
+	_start_jank_state()

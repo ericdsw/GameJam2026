@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://bho7k3idhc5g0"]
+
+[ext_resource type="Script" uid="uid://d3r2gejqxavt5" path="res://UserInterface/JankIndictor/JankIndicator.gd" id="1_ilq8r"]
+[ext_resource type="Texture2D" uid="uid://b5fy52ct3muie" path="res://Resources/Images/UI/Indicators/JankIndicator/hand_open.png" id="1_pikom"]
+[ext_resource type="Texture2D" uid="uid://qjn23gnt5xc1" path="res://Resources/Images/UI/Indicators/JankIndicator/hand_closed.png" id="1_vbvk4"]
+[ext_resource type="PackedScene" uid="uid://byjuhiocrobxl" path="res://UserInterface/JankIndictor/StrengthIndicator/StrengthIndicator.tscn" id="2_56daf"]
+
+[sub_resource type="Animation" id="Animation_ilq8r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_pikom")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pikom"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_pikom"), ExtResource("1_vbvk4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vmkax"]
+resource_name = "hold"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_vbvk4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 0), Vector2(-1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h3fcn"]
+resource_name = "release"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_pikom")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ilq8r"]
+_data = {
+&"RESET": SubResource("Animation_ilq8r"),
+&"default": SubResource("Animation_pikom"),
+&"hold": SubResource("Animation_vmkax"),
+&"release": SubResource("Animation_h3fcn")
+}
+
+[sub_resource type="Animation" id="Animation_32c3e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_56daf"]
+resource_name = "default"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.605, 1.605)]
+}
+
+[sub_resource type="Animation" id="Animation_l7psu"]
+resource_name = "off"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32c3e"]
+_data = {
+&"RESET": SubResource("Animation_32c3e"),
+&"default": SubResource("Animation_56daf"),
+&"off": SubResource("Animation_l7psu")
+}
+
+[node name="JankIndicator" type="Node2D" unique_id=441732250 node_paths=PackedStringArray("click_detector", "animation_player", "scale_animation_player", "strength_indicator")]
+script = ExtResource("1_ilq8r")
+click_detector = NodePath("ClickDetector")
+animation_player = NodePath("JankIndicatorSprite/AnimationPlayer")
+scale_animation_player = NodePath("JankIndicatorSprite/ScaleAnimationPlayer")
+strength_indicator = NodePath("StrengthIndicator")
+
+[node name="StrengthIndicator" parent="." unique_id=1359806308 instance=ExtResource("2_56daf")]
+position = Vector2(72, 21)
+
+[node name="JankIndicatorSprite" type="Sprite2D" parent="." unique_id=435323851]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_pikom")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="JankIndicatorSprite" unique_id=563778386]
+libraries/ = SubResource("AnimationLibrary_ilq8r")
+autoplay = &"default"
+
+[node name="ScaleAnimationPlayer" type="AnimationPlayer" parent="JankIndicatorSprite" unique_id=932039396]
+libraries/ = SubResource("AnimationLibrary_32c3e")
+autoplay = &"default"
+
+[node name="ClickDetector" type="Button" parent="." unique_id=1485635336]
+modulate = Color(1, 1, 1, 0)
+offset_left = -44.0
+offset_top = -45.0
+offset_right = 42.0
+offset_bottom = 43.0
+metadata/_edit_lock_ = true
+
+[connection signal="failed" from="StrengthIndicator" to="." method="_on_strength_indicator_failed"]
+[connection signal="success" from="StrengthIndicator" to="." method="_on_strength_indicator_success"]
+[connection signal="button_down" from="ClickDetector" to="." method="_on_click_detector_button_down"]
+[connection signal="button_up" from="ClickDetector" to="." method="_on_click_detector_button_up"]

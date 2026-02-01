@@ -11,8 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://del4lonx4vh2m" path="res://Objects/Props/CrystalBall/CrystalBall.tscn" id="8_dum88"]
 [ext_resource type="Texture2D" uid="uid://c87isx6ets1hd" path="res://Resources/Images/Elements/mask_basin.png" id="9_eji6o"]
 [ext_resource type="PackedScene" uid="uid://cg8adbrb1abfl" path="res://Utilities/FaceRandomizer/FaceRandomizer.tscn" id="10_dum88"]
+[ext_resource type="PackedScene" uid="uid://bho7k3idhc5g0" path="res://UserInterface/JankIndictor/JankIndicator.tscn" id="12_8a6gc"]
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "face_randomizer")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "face_randomizer", "jank_indicator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +29,7 @@ face_in_position = NodePath("FaceInPosition")
 face_out_position = NodePath("FaceOutPosition")
 mask_on_face_pos = NodePath("MaskOnFacePos")
 face_randomizer = NodePath("FaceRandomizer")
+jank_indicator = NodePath("JankIndicator")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1316918570]
@@ -83,3 +85,6 @@ position = Vector2(208, 496)
 texture = ExtResource("9_eji6o")
 
 [node name="FaceRandomizer" parent="." unique_id=235716661 instance=ExtResource("10_dum88")]
+
+[node name="JankIndicator" parent="." unique_id=435323851 instance=ExtResource("12_8a6gc")]
+position = Vector2(988, 513)

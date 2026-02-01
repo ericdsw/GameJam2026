@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://byjuhiocrobxl"]
+
+[ext_resource type="Script" uid="uid://beh60d7vqt1qf" path="res://UserInterface/JankIndictor/StrengthIndicator/StrengthIndicator.gd" id="1_hoq27"]
+[ext_resource type="Texture2D" uid="uid://ed3gjwerrsml" path="res://Resources/Images/UI/Indicators/StrengthIndicator/progress_blue_small_border.png" id="1_ridyo"]
+[ext_resource type="Texture2D" uid="uid://cwkm4nq4jfa5l" path="res://Resources/Images/UI/Indicators/StrengthIndicator/progress_green_small.png" id="2_hoq27"]
+[ext_resource type="Texture2D" uid="uid://dyagl3pt5aams" path="res://Resources/Images/UI/Indicators/StrengthIndicator/navigation_w.png" id="3_2pfmv"]
+
+[sub_resource type="Curve" id="Curve_hoq27"]
+_data = [Vector2(0, 0), 0.0, 1.8399366, 0, 1, Vector2(0.43558282, 0.80144477), 0.885129, 0.885129, 0, 0, Vector2(1, 1), 0.016821368, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2pfmv"]
+curve = SubResource("Curve_hoq27")
+
+[sub_resource type="Curve" id="Curve_a4a1n"]
+_data = [Vector2(0, 0), 0.0, 0.03815209, 0, 0, Vector2(0.796319, 0.48482972), 1.4667498, 1.4667498, 0, 0, Vector2(1, 1), 2.5292995, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4id7k"]
+curve = SubResource("Curve_a4a1n")
+
+[sub_resource type="Curve" id="Curve_fl7av"]
+_data = [Vector2(0, 0), 0.0, -0.007824413, 0, 0, Vector2(0.3607362, 0.16955626), 1.366744, 1.366744, 0, 0, Vector2(0.6822086, 0.8484004), 1.5472571, 1.5472571, 0, 0, Vector2(1, 1), 0.049699515, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_wuepb"]
+curve = SubResource("Curve_fl7av")
+
+[node name="StrengthIndicator" type="Node2D" unique_id=1359806308 node_paths=PackedStringArray("background", "success_area", "arrow")]
+script = ExtResource("1_hoq27")
+width = 35.0
+height = 300.0
+min_safe_zone = 140.0
+max_safe_zone = 200.0
+possible_position_curves = Array[CurveTexture]([SubResource("CurveTexture_2pfmv"), SubResource("CurveTexture_4id7k"), SubResource("CurveTexture_wuepb")])
+background = NodePath("Background")
+success_area = NodePath("SuccessArea")
+arrow = NodePath("Arrow")
+
+[node name="Background" type="NinePatchRect" parent="." unique_id=1351659425]
+offset_left = -17.5
+offset_top = -300.0
+offset_right = 17.5
+offset_bottom = 10.0
+texture = ExtResource("1_ridyo")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="SuccessArea" type="NinePatchRect" parent="." unique_id=1958479886]
+offset_left = -22.5
+offset_top = -200.0
+offset_right = 22.5
+offset_bottom = -140.0
+texture = ExtResource("2_hoq27")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Arrow" type="TextureRect" parent="." unique_id=842101288]
+offset_left = -4.5
+offset_top = -32.0
+offset_right = 59.5
+offset_bottom = 32.0
+texture = ExtResource("3_2pfmv")
+
+[node name="ArrowShadow" type="TextureRect" parent="Arrow" unique_id=343148015]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("3_2pfmv")

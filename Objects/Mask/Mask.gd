@@ -4,6 +4,7 @@ extends Node2D
 
 @export var shadow_texture_rect: TextureRect
 @export var mask_texture: TextureRect
+@export var drop_region: DropRegion
 
 
 var draggable := true
@@ -21,12 +22,18 @@ var _mask_initial_position := Vector2.ZERO
 signal dropped()
 
 
+# ================================ Lifecycle ================================ #
+
+
 func _ready() -> void:
 	_mask_initial_position = shadow_texture_rect.position
 
 
 func _physics_process(_delta: float) -> void:
 	_process_drag()
+
+
+# ================================= Private ================================= #
 
 
 func _process_drag() -> void:
@@ -58,6 +65,9 @@ func _stop_drag_mode() -> void:
 		_initial_drag_position = Vector2.ZERO
 		_initial_drag_self_pos = Vector2.ZERO
 		dropped.emit()
+
+
+# ================================ Callbacks ================================ #
 
 
 func _on_mask_sprite_gui_input(event: InputEvent) -> void:

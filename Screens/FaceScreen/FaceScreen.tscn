@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3n2nt44q0jua" path="res://Objects/Face/Face.tscn" id="1_rnw1p"]
 [ext_resource type="Texture2D" uid="uid://c4k1cfifklqh6" path="res://Resources/Images/Elements/towel.png" id="2_8fhud"]
 [ext_resource type="PackedScene" uid="uid://csgwsfnk31gor" path="res://Objects/Mask/Mask.tscn" id="3_ubqpy"]
+[ext_resource type="PackedScene" uid="uid://dxy7w8c4k71tl" path="res://Utilities/DropRegion/dropRegion.tscn" id="4_3s2lx"]
 [ext_resource type="PackedScene" uid="uid://cgvxhele8ddbe" path="res://Objects/Props/Incense/Incense.tscn" id="5_bohhc"]
 [ext_resource type="PackedScene" uid="uid://cclwx8ahyma8x" path="res://Objects/Props/Plant/Plant.tscn" id="6_psvc1"]
 [ext_resource type="PackedScene" uid="uid://cjt8pfkw7wppo" path="res://Objects/Props/WoodThing/WoodThing.tscn" id="7_eji6o"]
@@ -11,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c87isx6ets1hd" path="res://Resources/Images/Elements/mask_basin.png" id="9_eji6o"]
 [ext_resource type="PackedScene" uid="uid://cg8adbrb1abfl" path="res://Utilities/FaceRandomizer/FaceRandomizer.tscn" id="10_dum88"]
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("mask_start_position", "face", "face_in_position", "face_out_position", "mask_on_face_pos", "face_randomizer")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "face_randomizer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,8 +21,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_35dty")
 mask_scene = ExtResource("3_ubqpy")
-mask_start_position = NodePath("MaskStartPosition")
+drop_region = NodePath("MaskOnFacePos/DropRegion")
 face = NodePath("Face")
+mask_start_position = NodePath("MaskStartPosition")
 face_in_position = NodePath("FaceInPosition")
 face_out_position = NodePath("FaceOutPosition")
 mask_on_face_pos = NodePath("MaskOnFacePos")
@@ -50,6 +52,9 @@ position = Vector2(859.5, 1107.5)
 
 [node name="MaskOnFacePos" type="Marker2D" parent="." unique_id=1376672728]
 position = Vector2(883, 388)
+
+[node name="DropRegion" parent="MaskOnFacePos" unique_id=693461913 instance=ExtResource("4_3s2lx")]
+z_index = 999
 
 [node name="MaskStartPosition" type="Marker2D" parent="." unique_id=533221031]
 position = Vector2(215, 513)

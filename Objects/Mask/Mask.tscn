@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bigpkf5k3pkjf" path="res://Objects/Mask/Mask.gd" id="1_uxyop"]
 [ext_resource type="Texture2D" uid="uid://ds4m6ed0n4g6x" path="res://Resources/Images/Face/mask.png" id="2_3kh16"]
+[ext_resource type="PackedScene" uid="uid://dxy7w8c4k71tl" path="res://Utilities/DropRegion/dropRegion.tscn" id="3_3kh16"]
 
-[node name="Mask" type="Node2D" unique_id=775272652 node_paths=PackedStringArray("shadow_texture_rect", "mask_texture")]
+[node name="Mask" type="Node2D" unique_id=775272652 node_paths=PackedStringArray("shadow_texture_rect", "mask_texture", "drop_region")]
 script = ExtResource("1_uxyop")
 shadow_texture_rect = NodePath("MaskShadowTexture")
 mask_texture = NodePath("MaskTexture")
+drop_region = NodePath("DropRegion")
 
 [node name="MaskShadowTexture" type="TextureRect" parent="." unique_id=1415725889]
 modulate = Color(0, 0, 0, 0.6117647)
@@ -24,5 +26,8 @@ offset_right = 203.0
 offset_bottom = 193.0
 pivot_offset = Vector2(244, 294)
 texture = ExtResource("2_3kh16")
+
+[node name="DropRegion" parent="." unique_id=693461913 instance=ExtResource("3_3kh16")]
+position = Vector2(-7, -6)
 
 [connection signal="gui_input" from="MaskTexture" to="." method="_on_mask_sprite_gui_input"]

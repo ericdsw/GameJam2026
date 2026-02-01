@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dxy7w8c4k71tl"]
+
+[ext_resource type="Script" uid="uid://b5sfnugehk1so" path="res://Utilities/DropRegion/DropRegion.gd" id="1_yb155"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5w85f"]
+radius = 30.0
+
+[node name="DropRegion" type="Node2D" unique_id=693461913 node_paths=PackedStringArray("drop_collision_shape", "drop_area")]
+script = ExtResource("1_yb155")
+drop_collision_shape = NodePath("Area2D/CollisionShape2D")
+drop_area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=873534728]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=951005189]
+shape = SubResource("CircleShape2D_5w85f")

@@ -16,6 +16,7 @@ enum States {
 @export var max_face_amount := 10
 
 @export_group("Node References")
+@export var drop_region: DropRegion
 @export var face: Face
 @export var mask_start_position: Marker2D
 @export var face_in_position: Marker2D
@@ -108,6 +109,7 @@ func _mask_dropped_successfully() -> void:
 
 func _mask_failed() -> void:
 	face.mask_visible = false
+	_current_health -= 1
 	_start_dragging_mask_state()
 
 
@@ -120,16 +122,14 @@ func _on_face_slide_tween_completed() -> void:
 
 func _on_mask_dropped() -> void:
 
+	var _success := drop_region.overlaps_drop_region(_current_mask.drop_region)
+
 	_current_state = States.EvaluatingMaskDrag
 
 	_current_mask.draggable = false
 	_current_mask.queue_free()
 
-	var _mask_pos := _current_mask.global_position
-	var _face_pos := mask_on_face_pos.global_position
-	var _distance := _mask_pos.distance_to(_face_pos)
-
-	if _distance <= 20.0:
+	if _success:
 		_mask_dropped_successfully()
 	else:
 		_mask_failed()

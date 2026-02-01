@@ -32,4 +32,4 @@ func _on_button_mouse_exited(which_button: MainMenuButton) -> void:
 func _on_button_gui_input(input_event: InputEvent, which_button: MainMenuButton) -> void:
 	if input_event is InputEventMouseButton:
 		if input_event.button_index == MOUSE_BUTTON_LEFT and input_event.is_pressed():
-			navigate_to_screen.emit(which_button.screen_scene)
+			navigate_to_screen.emit(load(which_button.screen_scene_path))

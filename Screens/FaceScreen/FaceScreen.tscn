@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://c87isx6ets1hd" path="res://Resources/Images/Elements/mask_basin.png" id="9_eji6o"]
 [ext_resource type="PackedScene" uid="uid://cg8adbrb1abfl" path="res://Utilities/FaceRandomizer/FaceRandomizer.tscn" id="10_dum88"]
 [ext_resource type="PackedScene" uid="uid://bho7k3idhc5g0" path="res://UserInterface/JankIndictor/JankIndicator.tscn" id="12_8a6gc"]
+[ext_resource type="PackedScene" uid="uid://b30a2vivsyise" path="res://UserInterface/Health/Health.tscn" id="13_m5akd"]
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "face_randomizer", "jank_indicator")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "face_randomizer", "jank_indicator", "health")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_35dty")
 mask_scene = ExtResource("3_ubqpy")
+game_over_screen_scene_path = "uid://dsrdm8461ak6w"
 drop_region = NodePath("MaskOnFacePos/DropRegion")
 face = NodePath("Face")
 mask_start_position = NodePath("MaskStartPosition")
@@ -30,6 +32,7 @@ face_out_position = NodePath("FaceOutPosition")
 mask_on_face_pos = NodePath("MaskOnFacePos")
 face_randomizer = NodePath("FaceRandomizer")
 jank_indicator = NodePath("JankIndicator")
+health = NodePath("Health")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1316918570]
@@ -88,3 +91,17 @@ texture = ExtResource("9_eji6o")
 
 [node name="JankIndicator" parent="." unique_id=435323851 instance=ExtResource("12_8a6gc")]
 position = Vector2(988, 513)
+
+[node name="Health" parent="." unique_id=957640053 instance=ExtResource("13_m5akd")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -308.0
+offset_top = -48.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0

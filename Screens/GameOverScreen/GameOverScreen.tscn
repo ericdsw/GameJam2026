@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dsrdm8461ak6w"]
+
+[ext_resource type="Script" uid="uid://y8pq7gfbxv25" path="res://Screens/GameOverScreen/GameOverScreen.gd" id="1_m3vdb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tjpi0"]
+font_size = 64
+
+[node name="GameOverScreen" type="Control" unique_id=565171821]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m3vdb")
+main_menu_screen_path = "uid://byswwnp8lyn1k"
+face_screen_path = "uid://mrx75ou03kmh"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=973126403]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1429478766]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1767079043]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=15361099]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_tjpi0")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=228333625]
+layout_mode = 2
+theme_override_constants/separation = 54
+alignment = 1
+
+[node name="TryAgain" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1954895799]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 21
+text = "Try Again"
+flat = true
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=204234094]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 21
+text = "Quit"
+flat = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/TryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

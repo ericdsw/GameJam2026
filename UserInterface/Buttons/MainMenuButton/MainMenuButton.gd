@@ -23,7 +23,7 @@ extends Control
 	set(new_val):
 		right_selection_offset = new_val
 		_sync_right_selection_offset.call_deferred()
-@export var screen_scene: PackedScene
+@export_file("*.tscn") var screen_scene_path := ""
 @export var selection_rect: TextureRect
 @export var button_label: Label
 

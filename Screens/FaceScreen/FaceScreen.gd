@@ -7,13 +7,16 @@ enum States {
 	FaceEntering,
 	DraggingMask,
 	EvaluatingMaskDrag,
-	WaitingBeforeJank,
-	Janking
+	Janking,
+	NoHealth
 }
 
 
 @export var mask_scene: PackedScene
 @export var max_face_amount := 10
+@export var max_health := 6
+
+@export_file("*.tscn") var game_over_screen_scene_path := ""
 
 @export_group("Node References")
 @export var drop_region: DropRegion
@@ -24,13 +27,17 @@ enum States {
 @export var mask_on_face_pos: Marker2D
 @export var face_randomizer: FaceRandomizer
 @export var jank_indicator: JankIndicator
+@export var health: Health
 
 
 var _current_state := States.Idle
 var _current_mask: Mask
 var _face_slide_tween: Tween = null
 var _current_face_offset := 0
-var _current_health := 10
+var _current_health := 6:
+	set(new_val):
+		_current_health = new_val
+		_sync_health()
 
 
 var _faces_to_show : Array[FaceRandomizer.FaceRandomizerResult] = []
@@ -41,6 +48,8 @@ var _target_face : FaceRandomizer.FaceRandomizerResult = null
 
 
 func _ready() -> void:
+
+	_sync_health()
 
 	_faces_to_show = face_randomizer.generate_random_face_set(max_face_amount)
 	_target_face = _faces_to_show[randi_range(3, _faces_to_show.size() - 1)]
@@ -127,10 +136,29 @@ func _slide_face_out_after_round() -> void:
 	_face_slide_tween.tween_callback(_on_face_slide_out_tween_completed)
 
 
+func _substract_health() -> void:
+	_current_health -= 1
+
+
 func _mask_failed() -> void:
 	face.mask_visible = false
-	_current_health -= 1
-	_start_dragging_mask_state()
+	_substract_health()
+	if _current_health > 0:
+		_start_dragging_mask_state()
+	else:
+		_go_to_game_over()
+
+
+func _sync_health() -> void:
+	health.max_health = max_health
+	health.current_health = _current_health
+
+
+func _go_to_game_over() -> void:
+	_current_state = States.NoHealth
+	await create_tween().tween_interval(0.7).finished
+	navigate_to_screen.emit(load(game_over_screen_scene_path))
+
 
 
 # ================================ Callbacks ================================ #
@@ -171,7 +199,13 @@ func _on_jank_indicator_success() -> void:
 
 
 func _on_jank_indicator_failed() -> void:
-	await create_tween().tween_interval(0.7).finished
-	var _jank_ind_tween := create_tween()
-	_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
-	_start_jank_state()
+
+	_substract_health()
+
+	if _current_health > 0:
+		await create_tween().tween_interval(0.7).finished
+		var _jank_ind_tween := create_tween()
+		_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
+		_start_jank_state()
+	else:
+		_go_to_game_over()

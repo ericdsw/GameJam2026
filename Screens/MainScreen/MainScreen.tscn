@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c00bwv7mfsu67" path="res://Screens/MainScreen/MainScreen.gd" id="1_q1lju"]
 [ext_resource type="PackedScene" uid="uid://c0eyhjsqbcycs" path="res://UserInterface/Buttons/MainMenuButton/MainMenuButton.tscn" id="2_k2ber"]
-[ext_resource type="PackedScene" uid="uid://mrx75ou03kmh" path="res://Screens/FaceScreen/FaceScreen.tscn" id="3_s3utt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q1lju"]
 font_size = 52
@@ -72,7 +71,7 @@ theme_override_constants/separation = 12
 layout_mode = 2
 button_text = "Start Game"
 right_selection_offset = 64.0
-screen_scene = ExtResource("3_s3utt")
+screen_scene_path = "uid://mrx75ou03kmh"
 
 [node name="Credits" parent="VBoxContainer" unique_id=474490758 instance=ExtResource("2_k2ber")]
 layout_mode = 2

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b30a2vivsyise"]
+
+[ext_resource type="Script" uid="uid://bbwryg8bf4mu4" path="res://UserInterface/Health/Health.gd" id="1_vxidx"]
+[ext_resource type="Texture2D" uid="uid://cwstpwrmj2mbe" path="res://Resources/Images/UI/HealthBar/health_full.png" id="2_f4yo1"]
+[ext_resource type="Texture2D" uid="uid://vsup36oce0s1" path="res://Resources/Images/UI/HealthBar/health_empty.png" id="3_11vri"]
+
+[node name="Health" type="HBoxContainer" unique_id=957640053]
+script = ExtResource("1_vxidx")
+max_health = 6
+current_health = 6
+full_health_texture = ExtResource("2_f4yo1")
+empty_health_texture = ExtResource("3_11vri")

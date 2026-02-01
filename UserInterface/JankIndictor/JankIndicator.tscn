@@ -4,6 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://b5fy52ct3muie" path="res://Resources/Images/UI/Indicators/JankIndicator/hand_open.png" id="1_pikom"]
 [ext_resource type="Texture2D" uid="uid://qjn23gnt5xc1" path="res://Resources/Images/UI/Indicators/JankIndicator/hand_closed.png" id="1_vbvk4"]
 [ext_resource type="PackedScene" uid="uid://byjuhiocrobxl" path="res://UserInterface/JankIndictor/StrengthIndicator/StrengthIndicator.tscn" id="2_56daf"]
+[ext_resource type="Shader" uid="uid://dalgv6fpusylv" path="res://UserInterface/JankIndictor/JankIndicatorSprite.gdshader" id="3_32c3e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmkax"]
+shader = ExtResource("3_32c3e")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 3.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_ilq8r"]
 length = 0.001
@@ -193,6 +200,7 @@ strength_indicator = NodePath("StrengthIndicator")
 position = Vector2(72, 21)
 
 [node name="JankIndicatorSprite" type="Sprite2D" parent="." unique_id=435323851]
+material = SubResource("ShaderMaterial_vmkax")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_pikom")
 

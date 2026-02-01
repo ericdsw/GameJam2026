@@ -35,7 +35,7 @@ enum States {
 @export var in_bounds_target_preview_pos: Marker2D
 @export var screen_center_pos: Control
 @export var face_randomizer: FaceRandomizer
-@export var jank_indicator: JankIndicator
+@export var yank_indicator: YankIndicator
 @export var health: Health
 @export var target_preview: TargetPreview
 @export var canvas_modulate: CanvasModulate
@@ -75,9 +75,9 @@ func _ready() -> void:
 	_faces_to_show = face_randomizer.generate_random_face_set(randi_range(min_face_amount, max_face_amount))
 	_target_face = _faces_to_show[_faces_to_show.size() - 1]
 
-	jank_indicator.modulate.a = 0.0
-	jank_indicator.success.connect(_on_jank_indicator_success)
-	jank_indicator.fail.connect(_on_jank_indicator_failed)
+	yank_indicator.modulate.a = 0.0
+	yank_indicator.success.connect(_on_jank_indicator_success)
+	yank_indicator.fail.connect(_on_jank_indicator_failed)
 
 	face.global_position = face_out_position.global_position
 	face.mask_visible = false
@@ -149,11 +149,11 @@ func _start_jank_state() -> void:
 
 	_current_state = States.Janking
 
-	var _jank_ind_tween := create_tween()
-	_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 1.0, 0.3)
-	await _jank_ind_tween.finished
+	var _ind_tween := create_tween()
+	_ind_tween.tween_property(yank_indicator, "modulate:a", 1.0, 0.3)
+	await _ind_tween.finished
 
-	jank_indicator.start_detecting_click()
+	yank_indicator.start_detecting_click()
 
 
 func _slide_face_in() -> void:
@@ -265,8 +265,8 @@ func _on_jank_indicator_success() -> void:
 	else:
 		face.yank_mask_off()
 		await create_tween().tween_interval(0.7).finished
-		var _jank_ind_tween := create_tween()
-		_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
+		var _ind_tween := create_tween()
+		_ind_tween.tween_property(yank_indicator, "modulate:a", 0.0, 0.3)
 		_slide_face_out_after_round()
 
 
@@ -276,8 +276,8 @@ func _on_jank_indicator_failed() -> void:
 
 	if _current_health > 0:
 		await create_tween().tween_interval(0.7).finished
-		var _jank_ind_tween := create_tween()
-		_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
+		var _ind_tween := create_tween()
+		_ind_tween.tween_property(yank_indicator, "modulate:a", 0.0, 0.3)
 		_start_jank_state()
 	else:
 		_go_to_game_over()

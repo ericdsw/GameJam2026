@@ -65,7 +65,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
 theme_override_font_sizes/font_size = 28
 text = "2D Art
-Jose Garcia (Genow)"
+Jose Gracia (Genow)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -76,7 +76,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
 theme_override_font_sizes/font_size = 28
 text = "Music \"Intro\" and \"Suspense\"
-Luis Gutierres"
+Luis Gutiérrez"
 horizontal_alignment = 1
 autowrap_mode = 3
 

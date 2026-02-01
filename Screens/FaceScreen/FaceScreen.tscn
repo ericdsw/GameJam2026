@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://del4lonx4vh2m" path="res://Objects/Props/CrystalBall/CrystalBall.tscn" id="8_dum88"]
 [ext_resource type="Texture2D" uid="uid://c87isx6ets1hd" path="res://Resources/Images/Elements/mask_basin.png" id="9_eji6o"]
 [ext_resource type="PackedScene" uid="uid://cg8adbrb1abfl" path="res://Utilities/FaceRandomizer/FaceRandomizer.tscn" id="10_dum88"]
-[ext_resource type="PackedScene" uid="uid://bho7k3idhc5g0" path="res://UserInterface/JankIndictor/JankIndicator.tscn" id="12_8a6gc"]
+[ext_resource type="PackedScene" uid="uid://bho7k3idhc5g0" path="res://UserInterface/YankIndictor/YankIndicator.tscn" id="12_8a6gc"]
 [ext_resource type="PackedScene" uid="uid://b30a2vivsyise" path="res://UserInterface/Health/Health.tscn" id="13_m5akd"]
 [ext_resource type="PackedScene" uid="uid://u52lmrb4u102" path="res://Objects/TargetPreview/TargetPreview.tscn" id="14_l6s4y"]
 [ext_resource type="Texture2D" uid="uid://u5omq0qj4mrb" path="res://Resources/Images/UI/Overlays/ominous_overlay.png" id="15_islxt"]
@@ -115,7 +115,7 @@ _data = {
 &"out": SubResource("Animation_ra05t")
 }
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "jank_indicator", "health", "target_preview", "canvas_modulate", "ominous_overlay", "black_rip_color_cover_animation_player", "heartbeat_player", "drop_mask_player", "error_player", "drag_label")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "yank_indicator", "health", "target_preview", "canvas_modulate", "ominous_overlay", "black_rip_color_cover_animation_player", "heartbeat_player", "drop_mask_player", "error_player", "drag_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,7 +142,7 @@ out_of_bounds_target_preview_pos = NodePath("OutOfBoundsTargetPreviewPos")
 in_bounds_target_preview_pos = NodePath("InBoundsPreviewPos")
 screen_center_pos = NodePath("CenterContainer/ScreenCenter")
 face_randomizer = NodePath("FaceRandomizer")
-jank_indicator = NodePath("JankIndicator")
+yank_indicator = NodePath("YankIndicator")
 health = NodePath("Health")
 target_preview = NodePath("TargetPreview")
 canvas_modulate = NodePath("CanvasModulate")
@@ -255,7 +255,7 @@ metadata/_edit_lock_ = true
 libraries/ = SubResource("AnimationLibrary_81aqj")
 autoplay = &"default"
 
-[node name="JankIndicator" parent="." unique_id=435323851 instance=ExtResource("12_8a6gc")]
+[node name="YankIndicator" parent="." unique_id=435323851 instance=ExtResource("12_8a6gc")]
 position = Vector2(988, 513)
 
 [node name="Health" parent="." unique_id=957640053 instance=ExtResource("13_m5akd")]

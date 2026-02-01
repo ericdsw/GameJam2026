@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfk834nsnyrr0"
-path="res://.godot/imported/circular_transition.png-0a0d70fc8ee8997934b7df688e3153dd.ctex"
+uid="uid://b5fy52ct3muie"
+path="res://.godot/imported/yank_hand_open.png-82c32bcfa48b71307987926882197497.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/UI/Transition/circular_transition.png"
-dest_files=["res://.godot/imported/circular_transition.png-0a0d70fc8ee8997934b7df688e3153dd.ctex"]
+source_file="res://Resources/Images/UI/Indicators/YankIndicator/yank_hand_open.png"
+dest_files=["res://.godot/imported/yank_hand_open.png-82c32bcfa48b71307987926882197497.ctex"]
 
 [params]
 

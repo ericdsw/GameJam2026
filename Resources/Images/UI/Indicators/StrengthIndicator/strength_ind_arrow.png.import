@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbipnxyy1asy3"
-path="res://.godot/imported/diamond_transition.png-1dd21e739c724c9ac48a89ae3ae7ab82.ctex"
+uid="uid://dyagl3pt5aams"
+path="res://.godot/imported/strength_ind_arrow.png-f8fc1b7b467b792ca9b4a486d73f6ec1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/UI/Transition/diamond_transition.png"
-dest_files=["res://.godot/imported/diamond_transition.png-1dd21e739c724c9ac48a89ae3ae7ab82.ctex"]
+source_file="res://Resources/Images/UI/Indicators/StrengthIndicator/strength_ind_arrow.png"
+dest_files=["res://.godot/imported/strength_ind_arrow.png-f8fc1b7b467b792ca9b4a486d73f6ec1.ctex"]
 
 [params]
 

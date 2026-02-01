@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sfot2c6likdl"
-path="res://.godot/imported/hand_closed.png-770dff39f85a8b82eabf982214993d1e.ctex"
+uid="uid://qjn23gnt5xc1"
+path="res://.godot/imported/yank_hand_closed.png-32f5ca806d67bcf070edb6df2b0c7c9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/UI/Mouse/hand_closed.png"
-dest_files=["res://.godot/imported/hand_closed.png-770dff39f85a8b82eabf982214993d1e.ctex"]
+source_file="res://Resources/Images/UI/Indicators/YankIndicator/yank_hand_closed.png"
+dest_files=["res://.godot/imported/yank_hand_closed.png-32f5ca806d67bcf070edb6df2b0c7c9d.ctex"]
 
 [params]
 

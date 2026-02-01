@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://byjuhiocrobxl"]
 
-[ext_resource type="Script" uid="uid://beh60d7vqt1qf" path="res://UserInterface/JankIndictor/StrengthIndicator/StrengthIndicator.gd" id="1_hoq27"]
-[ext_resource type="Texture2D" uid="uid://ed3gjwerrsml" path="res://Resources/Images/UI/Indicators/StrengthIndicator/progress_blue_small_border.png" id="1_ridyo"]
-[ext_resource type="Texture2D" uid="uid://cwkm4nq4jfa5l" path="res://Resources/Images/UI/Indicators/StrengthIndicator/progress_green_small.png" id="2_hoq27"]
-[ext_resource type="Texture2D" uid="uid://dyagl3pt5aams" path="res://Resources/Images/UI/Indicators/StrengthIndicator/navigation_w.png" id="3_2pfmv"]
+[ext_resource type="Script" uid="uid://beh60d7vqt1qf" path="res://UserInterface/YankIndictor/StrengthIndicator/StrengthIndicator.gd" id="1_hoq27"]
+[ext_resource type="Texture2D" uid="uid://ed3gjwerrsml" path="res://Resources/Images/UI/Indicators/StrengthIndicator/strength_ind_background.png" id="1_ridyo"]
+[ext_resource type="Texture2D" uid="uid://cwkm4nq4jfa5l" path="res://Resources/Images/UI/Indicators/StrengthIndicator/strength_ind_safe_zone.png" id="2_hoq27"]
+[ext_resource type="Texture2D" uid="uid://dyagl3pt5aams" path="res://Resources/Images/UI/Indicators/StrengthIndicator/strength_ind_arrow.png" id="3_2pfmv"]
 
 [sub_resource type="Curve" id="Curve_hoq27"]
 _data = [Vector2(0, 0), 0.0, 1.8399366, 0, 1, Vector2(0.43558282, 0.80144477), 0.885129, 0.885129, 0, 0, Vector2(1, 1), 0.016821368, 0.0, 0, 0]

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GameJam2026"
+config/name="Masked Intentions"
 run/main_scene="uid://dy5efs386rt2q"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
@@ -22,6 +22,7 @@ window/size/viewport_height=720
 window/size/resizable=false
 window/dpi/allow_hidpi=false
 window/vsync/vsync_mode=0
+mouse_cursor/custom_image="uid://d0hukaorqd6f3"
 
 [input]
 

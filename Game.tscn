@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cyb1l0j454j5h" path="res://Game.gd" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://byswwnp8lyn1k" path="res://Screens/MainScreen/MainScreen.tscn" id="2_sb48q"]
 [ext_resource type="PackedScene" uid="uid://mi8l2fus25w0" path="res://UserInterface/TransitionCover/TransitionCover.tscn" id="3_u44n3"]
-[ext_resource type="AudioStream" uid="uid://buttmbep0mu17" path="res://Resources/Sounds/Music/Ambient.wav" id="4_sb48q"]
 
 [node name="Game" type="Node" unique_id=1179616670 node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("1_wbfu4")
@@ -15,4 +14,3 @@ audio_stream_player = NodePath("AudioStreamPlayer")
 position = Vector2(640, 360)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=313061378]
-stream = ExtResource("4_sb48q")

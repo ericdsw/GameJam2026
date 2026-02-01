@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bho7k3idhc5g0"]
 
-[ext_resource type="Script" uid="uid://d3r2gejqxavt5" path="res://UserInterface/JankIndictor/JankIndicator.gd" id="1_ilq8r"]
-[ext_resource type="Texture2D" uid="uid://b5fy52ct3muie" path="res://Resources/Images/UI/Indicators/JankIndicator/hand_open.png" id="1_pikom"]
-[ext_resource type="Texture2D" uid="uid://qjn23gnt5xc1" path="res://Resources/Images/UI/Indicators/JankIndicator/hand_closed.png" id="1_vbvk4"]
-[ext_resource type="PackedScene" uid="uid://byjuhiocrobxl" path="res://UserInterface/JankIndictor/StrengthIndicator/StrengthIndicator.tscn" id="2_56daf"]
-[ext_resource type="Shader" uid="uid://dalgv6fpusylv" path="res://UserInterface/JankIndictor/JankIndicatorSprite.gdshader" id="3_32c3e"]
+[ext_resource type="Script" uid="uid://d3r2gejqxavt5" path="res://UserInterface/YankIndictor/YankIndicator.gd" id="1_ilq8r"]
+[ext_resource type="Texture2D" uid="uid://b5fy52ct3muie" path="res://Resources/Images/UI/Indicators/YankIndicator/yank_hand_open.png" id="1_pikom"]
+[ext_resource type="Texture2D" uid="uid://qjn23gnt5xc1" path="res://Resources/Images/UI/Indicators/YankIndicator/yank_hand_closed.png" id="1_vbvk4"]
+[ext_resource type="PackedScene" uid="uid://byjuhiocrobxl" path="res://UserInterface/YankIndictor/StrengthIndicator/StrengthIndicator.tscn" id="2_56daf"]
+[ext_resource type="Shader" uid="uid://dalgv6fpusylv" path="res://UserInterface/YankIndictor/YankIndicatorSprite.gdshader" id="3_32c3e"]
 [ext_resource type="AudioStream" uid="uid://bbitn4nkiy4im" path="res://Resources/Sounds/SFX/click_002.ogg" id="6_vmkax"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vmkax"]
@@ -190,11 +190,11 @@ _data = {
 &"off": SubResource("Animation_l7psu")
 }
 
-[node name="JankIndicator" type="Node2D" unique_id=441732250 node_paths=PackedStringArray("click_detector", "animation_player", "scale_animation_player", "strength_indicator", "click_player")]
+[node name="YankIndicator" type="Node2D" unique_id=441732250 node_paths=PackedStringArray("click_detector", "animation_player", "scale_animation_player", "strength_indicator", "click_player")]
 script = ExtResource("1_ilq8r")
 click_detector = NodePath("ClickDetector")
-animation_player = NodePath("JankIndicatorSprite/AnimationPlayer")
-scale_animation_player = NodePath("JankIndicatorSprite/ScaleAnimationPlayer")
+animation_player = NodePath("YankIndicatorSprite/AnimationPlayer")
+scale_animation_player = NodePath("YankIndicatorSprite/ScaleAnimationPlayer")
 strength_indicator = NodePath("StrengthIndicator")
 click_player = NodePath("AudioStreamPlayer")
 
@@ -202,16 +202,16 @@ click_player = NodePath("AudioStreamPlayer")
 position = Vector2(72, 21)
 max_safe_zone = 240.0
 
-[node name="JankIndicatorSprite" type="Sprite2D" parent="." unique_id=435323851]
+[node name="YankIndicatorSprite" type="Sprite2D" parent="." unique_id=435323851]
 material = SubResource("ShaderMaterial_vmkax")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_pikom")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="JankIndicatorSprite" unique_id=563778386]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YankIndicatorSprite" unique_id=563778386]
 libraries/ = SubResource("AnimationLibrary_ilq8r")
 autoplay = &"default"
 
-[node name="ScaleAnimationPlayer" type="AnimationPlayer" parent="JankIndicatorSprite" unique_id=932039396]
+[node name="ScaleAnimationPlayer" type="AnimationPlayer" parent="YankIndicatorSprite" unique_id=932039396]
 libraries/ = SubResource("AnimationLibrary_32c3e")
 autoplay = &"default"
 

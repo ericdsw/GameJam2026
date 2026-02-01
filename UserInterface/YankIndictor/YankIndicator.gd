@@ -1,4 +1,4 @@
-class_name JankIndicator
+class_name YankIndicator
 extends Node2D
 
 

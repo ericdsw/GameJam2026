@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://vsup36oce0s1" path="res://Resources/Images/UI/HealthBar/health_empty.png" id="3_11vri"]
 
 [node name="Health" type="HBoxContainer" unique_id=957640053]
+offset_right = 250.0
+offset_bottom = 48.0
+alignment = 2
 script = ExtResource("1_vxidx")
 max_health = 4
 current_health = 4

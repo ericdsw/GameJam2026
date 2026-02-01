@@ -13,7 +13,8 @@ enum States {
 
 
 @export var mask_scene: PackedScene
-@export var max_face_amount := 5
+@export var min_face_amount := 4
+@export var max_face_amount := 7
 @export var max_health := 6
 @export var regular_canvas_modulate_color := Color.WHITE
 @export var mystical_canvas_modulate_color := Color.WHITE
@@ -43,6 +44,7 @@ enum States {
 @export var heartbeat_player: AudioStreamPlayer
 @export var drop_mask_player: AudioStreamPlayer
 @export var error_player: AudioStreamPlayer
+@export var drag_label: Label
 
 
 var _current_state := States.BeforeStarting
@@ -65,10 +67,12 @@ var _target_face : FaceRandomizer.FaceRandomizerResult = null
 
 func _ready() -> void:
 
+	drag_label.modulate.a = 0.0
+
 	_current_health = max_health
 	_sync_health()
 
-	_faces_to_show = face_randomizer.generate_random_face_set(max_face_amount)
+	_faces_to_show = face_randomizer.generate_random_face_set(randi_range(min_face_amount, max_face_amount))
 	_target_face = _faces_to_show[_faces_to_show.size() - 1]
 
 	jank_indicator.modulate.a = 0.0
@@ -128,6 +132,8 @@ func _start_round() -> void:
 func _start_dragging_mask_state() -> void:
 
 	_current_state = States.DraggingMask
+
+	create_tween().tween_property(drag_label, "modulate:a", 1.0, 0.3)
 
 	var _mask : Mask = mask_scene.instantiate()
 	_mask.global_position = mask_start_position.global_position
@@ -223,6 +229,8 @@ func _on_face_slide_tween_completed() -> void:
 
 
 func _on_mask_dropped() -> void:
+
+	create_tween().tween_property(drag_label, "modulate:a", 0.0, 0.3)
 
 	var _success := drop_region.overlaps_drop_region(_current_mask.drop_region)
 

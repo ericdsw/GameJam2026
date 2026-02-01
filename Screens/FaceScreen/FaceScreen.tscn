@@ -115,7 +115,7 @@ _data = {
 &"out": SubResource("Animation_ra05t")
 }
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "jank_indicator", "health", "target_preview", "canvas_modulate", "ominous_overlay", "black_rip_color_cover_animation_player", "heartbeat_player", "drop_mask_player", "error_player")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "jank_indicator", "health", "target_preview", "canvas_modulate", "ominous_overlay", "black_rip_color_cover_animation_player", "heartbeat_player", "drop_mask_player", "error_player", "drag_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,7 +124,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_35dty")
 mask_scene = ExtResource("3_ubqpy")
-max_face_amount = 2
+min_face_amount = 5
+max_face_amount = 8
 max_health = 4
 mystical_canvas_modulate_color = Color(0.88235295, 0.6784314, 1, 1)
 game_over_screen_scene_path = "uid://dsrdm8461ak6w"
@@ -150,6 +151,7 @@ black_rip_color_cover_animation_player = NodePath("BlackCover/AnimationPlayer")
 heartbeat_player = NodePath("HeartbeatPlayer")
 drop_mask_player = NodePath("DropPlayer")
 error_player = NodePath("ErrorPlayer")
+drag_label = NodePath("DragLabel")
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1919199873]
@@ -224,6 +226,20 @@ texture = ExtResource("9_eji6o")
 
 [node name="FaceRandomizer" parent="." unique_id=235716661 instance=ExtResource("10_dum88")]
 
+[node name="DragLabel" type="Label" parent="." unique_id=1727631610]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 208.0
+offset_right = 250.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 29
+text = "Drag
+↓"
+horizontal_alignment = 1
+
 [node name="OminousOverlay" type="TextureRect" parent="." unique_id=650126520]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -233,6 +249,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_islxt")
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OminousOverlay" unique_id=383223796]
 libraries/ = SubResource("AnimationLibrary_81aqj")

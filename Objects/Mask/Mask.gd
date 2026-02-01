@@ -5,6 +5,7 @@ extends Node2D
 @export var shadow_texture_rect: TextureRect
 @export var mask_texture: TextureRect
 @export var drop_region: DropRegion
+@export var pick_player: AudioStreamPlayer
 
 
 var draggable := true
@@ -46,6 +47,7 @@ func _process_drag() -> void:
 
 func _start_drag_mode() -> void:
 	if draggable:
+		pick_player.play()
 		_dragging = true
 		modulate.a = 1.0
 		_initial_drag_position = get_global_mouse_position()

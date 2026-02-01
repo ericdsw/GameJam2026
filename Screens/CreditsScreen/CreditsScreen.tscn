@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://2ewm6n1plbbc"]
+
+[ext_resource type="Script" uid="uid://d2pfup2vq508" path="res://Screens/CreditsScreen/CreditsScreen.gd" id="1_bfq4a"]
+
+[node name="CreditsScreen" type="Control" unique_id=1040643306]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bfq4a")
+main_menu_screen_path = "uid://byswwnp8lyn1k"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=579611742]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7372549, 0.8, 0.8784314, 1)
+
+[node name="TopLine" type="ColorRect" parent="ColorRect" unique_id=2031527228]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 40.0
+offset_top = 80.0
+offset_right = -40.0
+grow_horizontal = 2
+color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=981625765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=246502752]
+layout_mode = 2
+theme_override_constants/separation = 86
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=623525580]
+layout_mode = 2
+theme_override_constants/separation = 54
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1629191963]
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_font_sizes/font_size = 28
+text = "Programming
+Eric De Sedas (Xirec)"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=315246919]
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_font_sizes/font_size = 28
+text = "2D Art
+Jose Garcia (Genow)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=2066832866]
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_font_sizes/font_size = 28
+text = "Music \"Intro\" and \"Suspense\"
+Luis Gutierres"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer" unique_id=2139843908]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_font_sizes/font_size = 28
+text = "Royalty free assets by Kenney"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1767932196]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_font_sizes/font_size = 28
+text = "Other Music and Sounds - Creative Commons"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=495281243]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_colors/font_focus_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_colors/font_pressed_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_colors/font_hover_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+theme_override_font_sizes/font_size = 28
+text = "< Back"
+flat = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

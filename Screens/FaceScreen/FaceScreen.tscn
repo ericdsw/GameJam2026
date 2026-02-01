@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://u52lmrb4u102" path="res://Objects/TargetPreview/TargetPreview.tscn" id="14_l6s4y"]
 [ext_resource type="Texture2D" uid="uid://u5omq0qj4mrb" path="res://Resources/Images/UI/Overlays/ominous_overlay.png" id="15_islxt"]
 [ext_resource type="AudioStream" uid="uid://cqro78j18gpuf" path="res://Resources/Sounds/SFX/heartbeat.wav" id="16_df5k1"]
+[ext_resource type="AudioStream" uid="uid://by8o408241jii" path="res://Resources/Sounds/SFX/select_004.ogg" id="17_7etep"]
+[ext_resource type="AudioStream" uid="uid://b5lhbm2s1t72w" path="res://Resources/Sounds/SFX/error_006.ogg" id="18_81aqj"]
 
 [sub_resource type="Animation" id="Animation_df5k1"]
 length = 0.001
@@ -113,7 +115,7 @@ _data = {
 &"out": SubResource("Animation_ra05t")
 }
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "jank_indicator", "health", "target_preview", "canvas_modulate", "ominous_overlay", "black_rip_color_cover_animation_player", "heartbeat_player")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "jank_indicator", "health", "target_preview", "canvas_modulate", "ominous_overlay", "black_rip_color_cover_animation_player", "heartbeat_player", "drop_mask_player", "error_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,7 +129,7 @@ max_health = 4
 mystical_canvas_modulate_color = Color(0.88235295, 0.6784314, 1, 1)
 game_over_screen_scene_path = "uid://dsrdm8461ak6w"
 final_screen_scene_path = "uid://ptb28t8nnsrc"
-bgm_path = "uid://buttmbep0mu17"
+bgm_path = "uid://bgb0b5wsh3ium"
 ominous_bgm_path = "uid://doo5p603v54ec"
 drop_region = NodePath("MaskOnFacePos/DropRegion")
 face = NodePath("Face")
@@ -146,6 +148,8 @@ canvas_modulate = NodePath("CanvasModulate")
 ominous_overlay = NodePath("OminousOverlay")
 black_rip_color_cover_animation_player = NodePath("BlackCover/AnimationPlayer")
 heartbeat_player = NodePath("HeartbeatPlayer")
+drop_mask_player = NodePath("DropPlayer")
+error_player = NodePath("ErrorPlayer")
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1919199873]
@@ -277,3 +281,9 @@ autoplay = &"out"
 [node name="HeartbeatPlayer" type="AudioStreamPlayer" parent="." unique_id=2129126165]
 stream = ExtResource("16_df5k1")
 volume_db = 2.0
+
+[node name="DropPlayer" type="AudioStreamPlayer" parent="." unique_id=470429039]
+stream = ExtResource("17_7etep")
+
+[node name="ErrorPlayer" type="AudioStreamPlayer" parent="." unique_id=330307174]
+stream = ExtResource("18_81aqj")

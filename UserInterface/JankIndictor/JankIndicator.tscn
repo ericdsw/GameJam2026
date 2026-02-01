@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://qjn23gnt5xc1" path="res://Resources/Images/UI/Indicators/JankIndicator/hand_closed.png" id="1_vbvk4"]
 [ext_resource type="PackedScene" uid="uid://byjuhiocrobxl" path="res://UserInterface/JankIndictor/StrengthIndicator/StrengthIndicator.tscn" id="2_56daf"]
 [ext_resource type="Shader" uid="uid://dalgv6fpusylv" path="res://UserInterface/JankIndictor/JankIndicatorSprite.gdshader" id="3_32c3e"]
+[ext_resource type="AudioStream" uid="uid://bbitn4nkiy4im" path="res://Resources/Sounds/SFX/click_002.ogg" id="6_vmkax"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vmkax"]
 shader = ExtResource("3_32c3e")
@@ -189,12 +190,13 @@ _data = {
 &"off": SubResource("Animation_l7psu")
 }
 
-[node name="JankIndicator" type="Node2D" unique_id=441732250 node_paths=PackedStringArray("click_detector", "animation_player", "scale_animation_player", "strength_indicator")]
+[node name="JankIndicator" type="Node2D" unique_id=441732250 node_paths=PackedStringArray("click_detector", "animation_player", "scale_animation_player", "strength_indicator", "click_player")]
 script = ExtResource("1_ilq8r")
 click_detector = NodePath("ClickDetector")
 animation_player = NodePath("JankIndicatorSprite/AnimationPlayer")
 scale_animation_player = NodePath("JankIndicatorSprite/ScaleAnimationPlayer")
 strength_indicator = NodePath("StrengthIndicator")
+click_player = NodePath("AudioStreamPlayer")
 
 [node name="StrengthIndicator" parent="." unique_id=1359806308 instance=ExtResource("2_56daf")]
 position = Vector2(72, 21)
@@ -220,6 +222,9 @@ offset_top = -45.0
 offset_right = 42.0
 offset_bottom = 43.0
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1311864875]
+stream = ExtResource("6_vmkax")
 
 [connection signal="failed" from="StrengthIndicator" to="." method="_on_strength_indicator_failed"]
 [connection signal="success" from="StrengthIndicator" to="." method="_on_strength_indicator_success"]

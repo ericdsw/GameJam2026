@@ -3,6 +3,8 @@ extends BaseScreen
 
 
 @export var buttons: Array[MainMenuButton]
+@export var move_player: AudioStreamPlayer
+@export var click_player: AudioStreamPlayer
 @export_file("*.wav") var bgm_path := ""
 
 
@@ -22,6 +24,7 @@ func _on_button_mouse_entered(which_button: MainMenuButton) -> void:
 		_active_button = which_button
 		for button in buttons:
 			button.active = button == _active_button
+		move_player.play()
 
 
 func _on_button_mouse_exited(which_button: MainMenuButton) -> void:
@@ -34,6 +37,7 @@ func _on_button_mouse_exited(which_button: MainMenuButton) -> void:
 func _on_button_gui_input(input_event: InputEvent, which_button: MainMenuButton) -> void:
 	if input_event is InputEventMouseButton:
 		if input_event.button_index == MOUSE_BUTTON_LEFT and input_event.is_pressed():
+			click_player.play()
 			if which_button.name == "QuitGame":
 				get_tree().quit()
 			else:

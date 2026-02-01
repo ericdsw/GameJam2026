@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cgvxhele8ddbe" path="res://Objects/Props/Incense/Incense.tscn" id="3_1npaf"]
 [ext_resource type="PackedScene" uid="uid://cclwx8ahyma8x" path="res://Objects/Props/Plant/Plant.tscn" id="4_dc0bu"]
 [ext_resource type="PackedScene" uid="uid://cjt8pfkw7wppo" path="res://Objects/Props/WoodThing/WoodThing.tscn" id="5_4rtxu"]
+[ext_resource type="AudioStream" uid="uid://oovpw1lyd6v5" path="res://Resources/Sounds/SFX/click_003.ogg" id="6_dc0bu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q1lju"]
 font_size = 52
 font_color = Color(0.21176471, 0.1882353, 0.16470589, 1)
 
-[node name="MainScreen" type="Control" unique_id=955668182 node_paths=PackedStringArray("buttons")]
+[node name="MainScreen" type="Control" unique_id=955668182 node_paths=PackedStringArray("buttons", "move_player", "click_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +20,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q1lju")
 buttons = [NodePath("VBoxContainer/StartGame"), NodePath("VBoxContainer/Credits"), NodePath("VBoxContainer/QuitGame")]
-bgm_path = "uid://buttmbep0mu17"
+move_player = NodePath("MovePlayer")
+click_player = NodePath("ClickPlayer")
+bgm_path = "uid://bgb0b5wsh3ium"
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1242094119]
@@ -83,6 +86,7 @@ screen_scene_path = "uid://mrx75ou03kmh"
 layout_mode = 2
 button_text = "Credits"
 right_selection_offset = 64.0
+screen_scene_path = "uid://2ewm6n1plbbc"
 
 [node name="QuitGame" parent="VBoxContainer" unique_id=2028582430 instance=ExtResource("2_k2ber")]
 layout_mode = 2
@@ -98,3 +102,9 @@ position = Vector2(-10, 316)
 [node name="WoodThing" parent="." unique_id=1663942116 instance=ExtResource("5_4rtxu")]
 position = Vector2(683, 597)
 rotation = 1.5707964
+
+[node name="MovePlayer" type="AudioStreamPlayer" parent="." unique_id=1468902380]
+stream = ExtResource("6_dc0bu")
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="." unique_id=105693308]
+stream = ExtResource("6_dc0bu")

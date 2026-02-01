@@ -41,6 +41,8 @@ enum States {
 @export var ominous_overlay: TextureRect
 @export var black_rip_color_cover_animation_player: AnimationPlayer
 @export var heartbeat_player: AudioStreamPlayer
+@export var drop_mask_player: AudioStreamPlayer
+@export var error_player: AudioStreamPlayer
 
 
 var _current_state := States.BeforeStarting
@@ -182,6 +184,7 @@ func _slide_face_out_after_round() -> void:
 
 func _substract_health() -> void:
 	_current_health -= 1
+	error_player.play()
 
 
 func _mask_failed() -> void:
@@ -230,6 +233,7 @@ func _on_mask_dropped() -> void:
 
 	if _success:
 		_mask_dropped_successfully()
+		drop_mask_player.play()
 	else:
 		_mask_failed()
 

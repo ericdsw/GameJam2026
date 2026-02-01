@@ -6,6 +6,7 @@ extends Node2D
 @export var animation_player: AnimationPlayer
 @export var scale_animation_player: AnimationPlayer
 @export var strength_indicator: StrengthIndicator
+@export var click_player: AudioStreamPlayer
 
 
 signal success()
@@ -36,6 +37,8 @@ func stop_detecting_click() -> void:
 func _on_click_detector_button_down() -> void:
 	animation_player.play("hold")
 	scale_animation_player.play("off")
+	
+	click_player.play()
 	
 	if _bar_visibility_tween != null:
 		_bar_visibility_tween.kill()

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cg8adbrb1abfl"]
+
+[ext_resource type="Script" uid="uid://dp0nwd1gmsj2v" path="res://Utilities/FaceRandomizer/FaceRandomizer.gd" id="1_mk65s"]
+
+[node name="FaceRandomizer" type="Node" unique_id=235716661]
+script = ExtResource("1_mk65s")

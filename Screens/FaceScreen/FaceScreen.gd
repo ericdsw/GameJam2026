@@ -13,24 +13,36 @@ enum States {
 
 
 @export var mask_scene: PackedScene
-@export var mask_start_position: Marker2D
+@export var max_face_amount := 10
 
+@export_group("Node References")
 @export var face: Face
+@export var mask_start_position: Marker2D
 @export var face_in_position: Marker2D
 @export var face_out_position: Marker2D
 @export var mask_on_face_pos: Marker2D
+@export var face_randomizer: FaceRandomizer
 
 
 var _current_state := States.Idle
 var _current_mask: Mask
 var _face_slide_tween: Tween = null
+var _current_face_offset := 0
 var _current_health := 10
+
+
+var _faces_to_show : Array[FaceRandomizer.FaceRandomizerResult] = []
+var _target_face : FaceRandomizer.FaceRandomizerResult = null
 
 
 # ================================ Lifecycle ================================ #
 
 
 func _ready() -> void:
+
+	_faces_to_show = face_randomizer.generate_random_face_set(max_face_amount)
+	_target_face = _faces_to_show[randi_range(3, _faces_to_show.size() - 1)]
+
 	face.global_position = face_out_position.global_position
 	face.mask_visible = false
 	face.reset_physics_interpolation()
@@ -69,6 +81,7 @@ func _start_dragging_mask_state() -> void:
 
 func _slide_face_in() -> void:
 	face.scale = Vector2.ONE * 1.04
+	face.apply_face_randomizer_result(_faces_to_show[_current_face_offset])
 	if _face_slide_tween != null:
 		_face_slide_tween.kill()
 	_face_slide_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -123,4 +136,8 @@ func _on_mask_dropped() -> void:
 
 
 func _on_face_slide_out_tween_completed() -> void:
-	_slide_face_in()
+	_current_face_offset += 1
+	if _current_face_offset < _faces_to_show.size() - 1:
+		_slide_face_in()
+	else:
+		print("faces ran out")

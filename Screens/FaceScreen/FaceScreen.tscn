@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cjt8pfkw7wppo" path="res://Objects/Props/WoodThing/WoodThing.tscn" id="7_eji6o"]
 [ext_resource type="PackedScene" uid="uid://del4lonx4vh2m" path="res://Objects/Props/CrystalBall/CrystalBall.tscn" id="8_dum88"]
 [ext_resource type="Texture2D" uid="uid://c87isx6ets1hd" path="res://Resources/Images/Elements/mask_basin.png" id="9_eji6o"]
+[ext_resource type="PackedScene" uid="uid://cg8adbrb1abfl" path="res://Utilities/FaceRandomizer/FaceRandomizer.tscn" id="10_dum88"]
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("mask_start_position", "face", "face_in_position", "face_out_position", "mask_on_face_pos")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("mask_start_position", "face", "face_in_position", "face_out_position", "mask_on_face_pos", "face_randomizer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +25,7 @@ face = NodePath("Face")
 face_in_position = NodePath("FaceInPosition")
 face_out_position = NodePath("FaceOutPosition")
 mask_on_face_pos = NodePath("MaskOnFacePos")
+face_randomizer = NodePath("FaceRandomizer")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1316918570]
@@ -74,3 +76,5 @@ scale = Vector2(3, 3)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1906852054]
 position = Vector2(208, 496)
 texture = ExtResource("9_eji6o")
+
+[node name="FaceRandomizer" parent="." unique_id=235716661 instance=ExtResource("10_dum88")]

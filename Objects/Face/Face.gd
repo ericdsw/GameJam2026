@@ -39,6 +39,20 @@ extends Node2D
 @export_tool_button("randomize", "Callable") var randomize_action = _randomize
 
 
+# ================================= Public ================================== #
+
+
+func apply_face_randomizer_result(result: FaceRandomizer.FaceRandomizerResult) -> void:
+	base_variant = result.face
+	eyes_variant = result.eyes
+	hair_variant = result.hair
+	skin_color = result.skin_color
+	hair_color = result.hair_color
+
+
+# ================================= Private ================================= #
+
+
 func _sync_face() -> void:
 
 	mask_sprite.visible = mask_visible

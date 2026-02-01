@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://u52lmrb4u102"]
+
+[ext_resource type="PackedScene" uid="uid://c3n2nt44q0jua" path="res://Objects/Face/Face.tscn" id="1_4t1dn"]
+[ext_resource type="Texture2D" uid="uid://ce7xodvbf6n7u" path="res://Resources/Images/UI/TargetPreview/target_preview_background.png" id="1_pj73k"]
+[ext_resource type="Script" uid="uid://b0tnea07xhfry" path="res://Objects/TargetPreview/TargetPreview.gd" id="1_u5ti2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj73k"]
+font_color = Color(0.19215687, 0.18431373, 0.18431373, 1)
+
+[node name="TargetPreview" type="Node2D" unique_id=430050172 node_paths=PackedStringArray("face")]
+script = ExtResource("1_u5ti2")
+face = NodePath("Face")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1054845620]
+custom_minimum_size = Vector2(200, 220)
+offset_left = -100.0
+offset_top = -110.0
+offset_right = 100.0
+offset_bottom = 110.0
+mouse_filter = 1
+texture = ExtResource("1_pj73k")
+patch_margin_left = 21
+patch_margin_top = 21
+patch_margin_right = 21
+patch_margin_bottom = 21
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=918854601]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 22.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Your Target"
+label_settings = SubResource("LabelSettings_pj73k")
+horizontal_alignment = 1
+
+[node name="Face" parent="." unique_id=880044491 instance=ExtResource("1_4t1dn")]
+position = Vector2(-4, 31)
+scale = Vector2(0.25, 0.25)
+
+[connection signal="mouse_entered" from="NinePatchRect" to="." method="_on_nine_patch_rect_mouse_entered"]
+[connection signal="mouse_exited" from="NinePatchRect" to="." method="_on_nine_patch_rect_mouse_exited"]

@@ -13,8 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cg8adbrb1abfl" path="res://Utilities/FaceRandomizer/FaceRandomizer.tscn" id="10_dum88"]
 [ext_resource type="PackedScene" uid="uid://bho7k3idhc5g0" path="res://UserInterface/JankIndictor/JankIndicator.tscn" id="12_8a6gc"]
 [ext_resource type="PackedScene" uid="uid://b30a2vivsyise" path="res://UserInterface/Health/Health.tscn" id="13_m5akd"]
+[ext_resource type="PackedScene" uid="uid://u52lmrb4u102" path="res://Objects/TargetPreview/TargetPreview.tscn" id="14_l6s4y"]
 
-[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "face_randomizer", "jank_indicator", "health")]
+[node name="FaceScreen" type="Control" unique_id=32535975 node_paths=PackedStringArray("drop_region", "face", "mask_start_position", "face_in_position", "face_out_position", "mask_on_face_pos", "out_of_bounds_target_preview_pos", "in_bounds_target_preview_pos", "screen_center_pos", "face_randomizer", "jank_indicator", "health", "target_preview")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_35dty")
 mask_scene = ExtResource("3_ubqpy")
+max_health = 4
 game_over_screen_scene_path = "uid://dsrdm8461ak6w"
 drop_region = NodePath("MaskOnFacePos/DropRegion")
 face = NodePath("Face")
@@ -30,10 +32,25 @@ mask_start_position = NodePath("MaskStartPosition")
 face_in_position = NodePath("FaceInPosition")
 face_out_position = NodePath("FaceOutPosition")
 mask_on_face_pos = NodePath("MaskOnFacePos")
+out_of_bounds_target_preview_pos = NodePath("OutOfBoundsTargetPreviewPos")
+in_bounds_target_preview_pos = NodePath("InBoundsPreviewPos")
+screen_center_pos = NodePath("CenterContainer/ScreenCenter")
 face_randomizer = NodePath("FaceRandomizer")
 jank_indicator = NodePath("JankIndicator")
 health = NodePath("Health")
+target_preview = NodePath("TargetPreview")
 metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1919199873]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScreenCenter" type="Control" parent="CenterContainer" unique_id=1671085088]
+layout_mode = 2
 
 [node name="Background" type="ColorRect" parent="." unique_id=1316918570]
 layout_mode = 1
@@ -63,6 +80,13 @@ z_index = 999
 
 [node name="MaskStartPosition" type="Marker2D" parent="." unique_id=533221031]
 position = Vector2(215, 513)
+
+[node name="OutOfBoundsTargetPreviewPos" type="Marker2D" parent="." unique_id=2131450544]
+position = Vector2(460, 767)
+
+[node name="InBoundsPreviewPos" type="Marker2D" parent="." unique_id=1016347688]
+position = Vector2(467.00003, 582)
+scale = Vector2(1.5, 1.5)
 
 [node name="Face" parent="." unique_id=880044491 instance=ExtResource("1_rnw1p")]
 position = Vector2(859.5, 435.5)
@@ -105,3 +129,7 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="TargetPreview" parent="." unique_id=430050172 instance=ExtResource("14_l6s4y")]
+position = Vector2(467.00003, 582)
+scale = Vector2(1.5, 1.5)

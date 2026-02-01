@@ -7,6 +7,7 @@ extends Node2D
 @export var eyes_sprite: Sprite2D
 @export var hairs_sprite: Sprite2D
 @export var mask_sprite: Sprite2D
+@export var mask_animation_player: AnimationPlayer
 
 
 @export_range(1, 3) var base_variant := 1:
@@ -51,6 +52,14 @@ func apply_face_randomizer_result(result: FaceRandomizer.FaceRandomizerResult) -
 
 
 # ================================= Private ================================= #
+
+
+func reset_mask() -> void:
+	mask_animation_player.play("default")
+
+
+func yank_mask_off() -> void:
+	mask_animation_player.play("yank_off")
 
 
 func _sync_face() -> void:

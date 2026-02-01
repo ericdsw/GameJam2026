@@ -3,7 +3,7 @@ extends BaseScreen
 
 
 enum States {
-	Idle,
+	BeforeStarting,
 	FaceEntering,
 	DraggingMask,
 	EvaluatingMaskDrag,
@@ -13,7 +13,7 @@ enum States {
 
 
 @export var mask_scene: PackedScene
-@export var max_face_amount := 10
+@export var max_face_amount := 5
 @export var max_health := 6
 
 @export_file("*.tscn") var game_over_screen_scene_path := ""
@@ -25,14 +25,19 @@ enum States {
 @export var face_in_position: Marker2D
 @export var face_out_position: Marker2D
 @export var mask_on_face_pos: Marker2D
+@export var out_of_bounds_target_preview_pos: Marker2D
+@export var in_bounds_target_preview_pos: Marker2D
+@export var screen_center_pos: Control
 @export var face_randomizer: FaceRandomizer
 @export var jank_indicator: JankIndicator
 @export var health: Health
+@export var target_preview: TargetPreview
 
 
-var _current_state := States.Idle
+var _current_state := States.BeforeStarting
 var _current_mask: Mask
 var _face_slide_tween: Tween = null
+var _target_preview_tween: Tween = null
 var _current_face_offset := 0
 var _current_health := 6:
 	set(new_val):
@@ -52,7 +57,7 @@ func _ready() -> void:
 	_sync_health()
 
 	_faces_to_show = face_randomizer.generate_random_face_set(max_face_amount)
-	_target_face = _faces_to_show[randi_range(3, _faces_to_show.size() - 1)]
+	_target_face = _faces_to_show[_faces_to_show.size() - 1]
 
 	jank_indicator.modulate.a = 0.0
 	jank_indicator.success.connect(_on_jank_indicator_success)
@@ -61,6 +66,16 @@ func _ready() -> void:
 	face.global_position = face_out_position.global_position
 	face.mask_visible = false
 	face.reset_physics_interpolation()
+
+	target_preview.global_position = screen_center_pos.global_position + Vector2.DOWN * 10.0
+	target_preview.scale = Vector2.ONE * 2.0
+	target_preview.modulate.a = 0.0
+	target_preview.apply_face_randomizer_result(_target_face)
+	target_preview.reset_physics_interpolation()
+
+	target_preview.mouse_focused.connect(_on_target_preview_mouse_focused)
+	target_preview.mouse_unfocused.connect(_on_target_preview_mouse_unfocused)
+
 	navigation_finished()
 
 
@@ -68,7 +83,25 @@ func _ready() -> void:
 
 
 func navigation_finished() -> void:
-	await create_tween().tween_interval(1.0).finished
+
+	await create_tween().tween_interval(0.5).finished
+	target_preview.global_position = screen_center_pos.global_position + Vector2.DOWN * 10.0
+
+	if _target_preview_tween != null:
+		_target_preview_tween.kill()
+	_target_preview_tween = create_tween()
+	_target_preview_tween.tween_property(target_preview, "global_position", screen_center_pos.global_position, 0.5)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	_target_preview_tween.parallel()\
+			.tween_property(target_preview, "modulate:a", 1.0, 0.5)
+	_target_preview_tween.tween_interval(2.0)
+	_target_preview_tween\
+			.tween_property(target_preview, "global_position", out_of_bounds_target_preview_pos.global_position, 0.7)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	_target_preview_tween.parallel()\
+			.tween_property(target_preview, "scale", Vector2.ONE, 0.7)
+	
+	await _target_preview_tween.finished
 	_start_round()
 
 
@@ -106,6 +139,7 @@ func _start_jank_state() -> void:
 
 
 func _slide_face_in() -> void:
+	face.reset_mask()
 	face.scale = Vector2.ONE * 1.04
 	face.apply_face_randomizer_result(_faces_to_show[_current_face_offset])
 	if _face_slide_tween != null:
@@ -192,6 +226,7 @@ func _on_face_slide_out_tween_completed() -> void:
 
 
 func _on_jank_indicator_success() -> void:
+	face.yank_mask_off()
 	await create_tween().tween_interval(0.7).finished
 	var _jank_ind_tween := create_tween()
 	_jank_ind_tween.tween_property(jank_indicator, "modulate:a", 0.0, 0.3)
@@ -209,3 +244,25 @@ func _on_jank_indicator_failed() -> void:
 		_start_jank_state()
 	else:
 		_go_to_game_over()
+
+
+func _on_target_preview_mouse_focused() -> void:
+	if _current_state != States.BeforeStarting:
+		if _target_preview_tween != null:
+			_target_preview_tween.kill()
+		_target_preview_tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		_target_preview_tween.\
+				tween_property(target_preview, "global_position", in_bounds_target_preview_pos.global_position, 0.3)
+		_target_preview_tween.parallel()\
+				.tween_property(target_preview, "scale", Vector2.ONE * 1.5, 0.3)
+
+
+func _on_target_preview_mouse_unfocused() -> void:
+	if _current_state != States.BeforeStarting:
+		if _target_preview_tween != null:
+			_target_preview_tween.kill()
+		_target_preview_tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		_target_preview_tween.\
+				tween_property(target_preview, "global_position", out_of_bounds_target_preview_pos.global_position, 0.3)
+		_target_preview_tween.parallel()\
+				.tween_property(target_preview, "scale", Vector2.ONE, 0.3)

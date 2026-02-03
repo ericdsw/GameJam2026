@@ -3,32 +3,47 @@ class_name MainMenuButton
 extends Control
 
 
+############### Exported properties
+
+## Text that the button will display
 @export var button_text: String:
 	set(new_val):
 		button_text = new_val
 		_sync_text.call_deferred()
+## Text color when not hovering over the button (background color will be transparent)
 @export var inactive_color: Color:
 	set(new_val):
 		inactive_color = new_val
 		_sync_colors.call_deferred()
+## Text color when hovering over the button (background iwll be inactive color)
 @export var active_color: Color:
 	set(new_val):
 		active_color = new_val
 		_sync_colors.call_deferred()
+## Whether the mouse is hovering over the button (the button itself will not detect that callback, it
+## will be managed by the MainScreen)
 @export var active := false:
 	set(new_val):
 		active = new_val
 		_sync_colors.call_deferred(0.2)
+## Additional horizontal space the background will be moved in relation to the button position.
 @export var right_selection_offset := 0.0:
 	set(new_val):
 		right_selection_offset = new_val
 		_sync_right_selection_offset.call_deferred()
+## Path to the screen resource this button points to (it's a string to prevent circular load loops)
 @export_file("*.tscn") var screen_scene_path := ""
+@export_group("Node References")
 @export var selection_rect: TextureRect
 @export var button_label: Label
 
 
+############### Private variables
+
 var _animation_tween : Tween = null
+
+
+# ================================ Lifecycle ================================ #
 
 
 func _ready() -> void:
@@ -36,6 +51,9 @@ func _ready() -> void:
 	_sync_text()
 	_sync_colors(0.0)
 	_sync_right_selection_offset()
+
+
+# ================================= Private ================================= #
 
 
 func _sync_colors(animation_duration := 0.0) -> void:

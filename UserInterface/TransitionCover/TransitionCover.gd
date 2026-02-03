@@ -2,14 +2,23 @@ class_name TransitionCover
 extends Control
 
 
-@export var cover : ColorRect
+############### Exported properties
 
+@export var cover: ColorRect
+
+
+############### Private variables
+
+var _transition_tween: Tween = null
+
+
+############### Signals
 
 signal peaked()
 signal transition_finished()
 
 
-var _transition_tween : Tween = null
+# ================================ Lifecycle ================================ #
 
 
 func _ready() -> void:
@@ -24,6 +33,9 @@ func _ready() -> void:
 			.set_trans(Tween.TRANS_SINE)\
 			.set_ease(Tween.EASE_IN)
 	_transition_tween.tween_callback(func(): transition_finished.emit())
+
+
+# ================================= Private ================================= #
 
 
 func _apply_shader_cutoff(new_val: float) -> void:

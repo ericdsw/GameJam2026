@@ -1,7 +1,10 @@
+## Individual smoke clouds placed on top of the incense node.
 @tool
 class_name Smoke
 extends Node2D
 
+
+############### Exported properties
 
 @export var smoke_sprite: Sprite2D
 @export var apparent_motion_raycast: RayCast2D
@@ -15,9 +18,13 @@ extends Node2D
 		_sync_animate_in_editor.call_deferred()
 
 
+############### Private variables
+
 var _visibility_tween : Tween = null
 var _initial_position := Vector2.ZERO
 
+
+# ================================ Lifecycle ================================ #
 
 func _ready() -> void:
 
@@ -32,6 +39,9 @@ func _ready() -> void:
 			_visibility_tween.kill()
 		smoke_sprite.self_modulate.a = 1.0
 		smoke_sprite.position = _initial_position
+
+
+# ================================= Private ================================= #
 
 
 func _sync_animate_in_editor() -> void:

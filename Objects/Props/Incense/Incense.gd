@@ -1,7 +1,10 @@
+## Prop that animates a series of smoke nodes.
 @tool
 class_name Incense
 extends Sprite2D
 
+
+############### Exported properties
 
 @export var smokes : Array[Smoke]
 @export var regular_smoke_color := Color.WHITE
@@ -15,7 +18,12 @@ extends Sprite2D
 			make_normal(1.0)
 
 
+############### Private variables
+
 var _color_swap_tween : Tween = null
+
+
+# ================================ Lifecycle ================================ #
 
 
 func _ready() -> void:
@@ -23,6 +31,9 @@ func _ready() -> void:
 		make_mystical(0.0)
 	else:
 		make_normal(0.0)
+
+
+# ================================= Public ================================== #
 
 
 func make_normal(duration := 0.0) -> void:

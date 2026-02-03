@@ -2,23 +2,32 @@ class_name Mask
 extends Node2D
 
 
+############### Exported properties
+
+@export_group("Node References")
 @export var shadow_texture_rect: TextureRect
 @export var mask_texture: TextureRect
 @export var drop_region: DropRegion
 @export var pick_player: AudioStreamPlayer
 
 
+############### Public variables
+
+## If true, the mask can be dragged
 var draggable := true
 
 
+############### Private variables
+
+## Whether the mask is being actively dragged
 var _dragging := false
 var _initial_drag_position := Vector2.ZERO
 var _initial_drag_self_pos := Vector2.ZERO
-
-
-var _size_tween : Tween = null
 var _mask_initial_position := Vector2.ZERO
+var _size_tween : Tween = null
 
+
+############### Signals
 
 signal dropped()
 
@@ -30,7 +39,7 @@ func _ready() -> void:
 	_mask_initial_position = shadow_texture_rect.position
 
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	_process_drag()
 
 
